@@ -1,0 +1,267 @@
+<section id ="Raster Lab"><title>Laboratory: Raster Graphics and RGB Colors</title>
+
+<section id ="Summary">
+<para>
+<emphasis>Summary:</emphasis> In this laboratory, you will explore some issues with the creation and modification of simple raster graphics, primarily in terms of the creation and analysis of colors.
+</para>
+</section> <!-- Summary -->
+
+<section id ="Preparation"><title>Preparation</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Create and show a 9x5 image called landscape.</para>
+</listitem>
+<listitem>
+<para>As you may recall, the initial color associated with an image is the current background color. Change the background color to yellow.</para>
+</listitem>
+<listitem>
+<para>Create and show a 5x7 image called portrait.</para>
+</listitem>
+<listitem>
+<para>Increase the magnification of each image to 800% so that you can see changes to individual pixels.</para>
+</listitem>
+<listitem>
+<para>Save a picture to /home/username/Desktop/pic.jpg, load that picture, name it self-portrait, and show it in a new window.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Preparation  -->
+
+<section id ="Exercises"><title>Exercises</title>
+
+<section id ="Exercise 1"><title>Exercise 1: Changing Selected Pixels</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Make the top-left pixel of portrait and landscape red. Recall that you set pixels using <code>image_set_pixel(image, column, row, color)</code> and that you can get a color from its name with 
+<code>color_name_to_rgb(name)</code>.</para>
+</listitem>
+</orderedlist>
+<listitem>
+<para>Make the bottom-right pixel of each of the two images black.</para>
+</listitem>
+</section> <!-- Exercise 1 -->
+
+<section id ="Exercise 2"><title>Exercise 2: A Simple Figure</title>
+<para>
+Write instructions to make a green plus sign in the exact center of portrait. The plus sign should be three pixels wide and three pixels high.
+</para>
+</section> <!-- Exercise 2 -->
+
+<section id ="Exercise 3"><title>Exercise 3: Selecting New Colors</title>
+<para>
+As you've noted, we regularly suggest colors for you to use. Of course, you should not be limited by our suggestions for possible colors. Write down the names of five of your favorite colors and then see if any of them are defined by using context-list-colors. For example, if one of my favorite colors is a kind of pink (say, hot pink), I might write:
+<code> >>>context_list_colors("pink")</code>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Using those results or other explorations of the color space, pick three color names that you like, find the corresponding RGB values, and name them fave1, fave2, and fave3. Add these definitions to your library file.
+</para>
+</listitem>
+<para>
+For example, if hot pink were my favorite color, I might write
+<code>fave1 = color_name_to_rgb("hotpink")</code>
+</para>
+<para>
+You may find it easiest to consider a color using context-set-fgcolor!. For example, if I wanted to see what hot pink looked like, I might use
+<code>context_set_fgcolor("hotpink")</code>
+</para>
+<listitem>
+<para>Set some pixels to your favorite colors.</para>
+</listitem>
+</orderedlist>
+
+</para>
+</section> <!-- Exercise 3 -->
+
+<section id ="Exercise 4"><title>Exercise 4: Representing Colors</title>
+<para>
+Recall that you can find out the value rgb-triple associates with a name by typing it in the interactions window and then hitting enter.
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Find out what values gimp associates with your three favorite colors. For example, type fave1 to identify what value is used for fave1.</para>
+</listitem>
+<listitem>
+<para>Are those values clearer or less clear than the names you've used?</para>
+</listitem>
+<listitem>
+<para>(Optional) Hypothesize what those values represent. You might find it useful to create a few colors which have only one of the three components.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 4 -->
+
+<section id ="Exercise 5"><title>Exercise 5: Getting Information from Existing Images</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Set the color of the center pixel in portrait to the color of the center pixel in the image you saved earlier (Hint: Use image_width and image_height to find the width and height of the image.)</para>
+</listitem>
+<listitem>
+<para>Find out the names of the colors of some pixels in self-portrait using <code>image_get_pixel</code></para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 5 -->
+
+<section id ="Exercise 6"><title>Exercise 6: Primaries</title>
+<para>
+The primary colors are the colors in which one of the three components has the full value (255) and the other two components are 0.
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>What colors do you expect to get from <code>rgb_new (255, 0, 0)</code>, <code>rgb_new (0, 255, 0)</code>, and <code>rgb_new (0, 0, 255)</code>?</para>
+</listitem>
+<listitem>
+<para>Explore your answers by setting various pixels in landscape to the specified colors. For example, you might set the top-left pixel to the first color with
+<code> >>> image_set_pixel (landscape, 0, 0, rgb-new (255, 0, 0))</code></para>
+</listitem>
+<listitem>
+<para>Explore your answers by using rgb_to_color_name to find the names associated with these colors.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 6 -->
+
+<section id ="Exercise 7"><title>Exercise 7: Secondaries</title>
+<para>
+The secondary colors are those you get when you set two components to 255 and the third to 0.
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>What colors do you expect to get from <code>rgb_new (255, 255, 0)</code>, <code>rgb_new (255, 0, 255)</code>, and <code>rgb_new (0, 255, 255)</code>?</para>
+</listitem>
+<listitem>
+<para>Explore your answers by setting various pixels in landscape to the specified colors.</para>
+</listitem>
+<listitem>
+<para>Explore your answers by using rgb_to_color_name to find the names associated with these colors.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 7 -->
+
+<section id ="Exercise 8"><title>Exercise 8: Reduced Components</title>
+<para>
+In the previous two experiments, we set the level of components to 255 or to 0. Let's consider what happens if the components are less than 255.
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>What colors do you expect to get from <code>rgb_new (192, 192, 0)</code>, <code>rgb_new (128, 128, 0)</code>, <code>rgb-new (64, 64, 0)</code>, <code>rgb_new (192, 64, 0)</code>, and <code>rgb_new (64, 192, 0)</code>?</para>
+</listitem>
+<listitem>
+<para>Check your predictions by setting various pixels in landscape to the specified colors.</para>
+</listitem>
+<listitem>
+<para>Determine what names MediaScript associates with these colors. Are they good names?</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 8 -->
+
+<section id ="Exercise 9"><title>Exercise 9: Common Components</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>What do you expect to have happen if all three components of a color are 128? If all three components are 255? If all three components are 0?</para>
+</listitem>
+<listitem>
+<para>Check your answers by setting a pixel to each color and by finding MediaScript's name for that color.</para>
+</listitem>
+</orderedlist>
+<para>
+If you are done, check the <link linkend="Notes 1">notes</link> on this exercise.
+</para>
+</section> <!-- Exercise 9 -->
+
+<section id ="Exercise 10"><title>Exercise 10: Your Favorite Colors, Revisited</title>
+<para>
+In an earlier exercise, you defined three favorite colors. Your definitions looked something like the following:
+<programlisting>
+fave1 = color_name_to_rgb ("hotpink")
+fave2 = color_name_to_rgb ("aquamarine")
+fave3  = color_name_to_rgb ("wheat")
+</programlisting>
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Determine the red, green, and blue components of fave1 using <code>rgb_red</code>, <code>rgb_green</code>, and <code>rgb_blue.</code></para>
+</listitem>
+<listitem>
+<para>Determine the red, green, and blue components of fave2, using <code>rgb_to_rgb_string</code>.</para>
+</listitem>
+<listitem>
+<para>Determine the red, green, and blue components of fave3, using <code>rgb_to_rgb_list</code>.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 10 -->
+
+</section> <!-- Exercises -->
+
+<section id ="Notes"><title>Notes</title>
+
+<section id ="Notes 1"><title>Notes on Exercise 9: Common Components</title>
+<para>
+It should make some sense that the color 0/0/0 is black, since black is the absence of any color. To many, though, it makes less sense that 255/255/255 is white. However, if you ask a physicist, she will tell you that white is the combination of every color of light, so saturation of all three components makes sense. Alternately, we can simply think of white as the opposite of black. Once we know white and black, we can expect that every color with common components in between white and black is some kind of grey, so 128/128/128 is medium grey. (Or is that “medium gray”?)
+</para>
+<para>
+<link linkend="Exercise 9">Return to the problem.</link>
+</para>
+</section> <!-- Notes 1 -->
+
+</section> <!-- Notes -->
+
+<section id ="Explorations"><title>Explorations</title>
+<para>
+<emphasis>Explorations are intended for students interested in further exploring the design aspects of these techniques. They also provide students who finish early with extra activities that may challenge them in different ways.</emphasis>
+</para>
+
+<section id ="Exploration 1"><title>Exploration 1: Generating Colors</title>
+<para>
+It is useful to be able to visualize the relationship between the RGB numbers and the colors they represent. Sometimes it's just fun to see how well you can guess the components of a color. For each of the following colors, guess the RGB components, build a pixel of that color to see how close you got, and then try again.
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>The dominant color of your skin.</para>
+</listitem>
+<listitem>
+<para>A color of your shirt.</para>
+</listitem>
+<listitem>
+<para>The color of the desks in this room.</para>
+</listitem>
+<listitem>
+<para>The color of the sky right before a storm.</para>
+</listitem>
+<listitem>
+<para>A color of your choice (which you should describe first).</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exploration 1 -->
+
+<section id ="Exploration 2"><title>Exploration 2: Composition in Blues</title>
+<para>
+Create a new 9x5 image called canvas. Fill the pixels of the canvas with variations of blue to produce something you find compelling.
+If those instructions are too vague, you might consider how to use those shades of blue to make an image that induces some mood, such as relaxation or playfulness.
+</para>
+</section> <!-- Exploration 2 -->
+
+<section id ="Exploration 3"><title>Exploration 3: Color Context</title>
+<para>
+While the representation of colors using red, green, and blue components is relatively straightforward, it ignores a significant issue: Human perception. Perhaps not so surprisingly, the way we perceive a particular color depends greatly upon the surrounding colors. We can use the techniques we've learned so far to explore this issue.
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Create and show two images, <code>canvas_light</code> and <code>canvas_dark</code>, each 9x5. The background color of the first canvas should be a light grey, about 64/64/64. The background color of the second canvas should be a dark grey, about 192/192/192. Zoom in on each canvas to the full 16:1 magnification.</para>
+</listitem>
+<listitem>
+<para>Set the center pixel of each canvas to a medium grey, 128/128/128.</para>
+</listitem>
+<listitem>
+<para>Do the center pixels look the same to you? Should they?</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exploration 3 -->
+
+<section id ="Exploration 4"><title>Exploration 4: Related Colors</title>
+<para>
+Pick a technique for generating a group of eight or so related colors. For example, you might choose a variety of complements to some color, you might choose colors in which the ratio of red to green and of red to blue is consistent (e.g., red is always twice green and triple blue), or you might start with a single color and find variants by repeatedly adding 16 to each component.
+Create an interesting 5x5 image using those colors.
+</para>
+</section> <!-- Exploration 4 -->
+
+</section> <!-- Explorations -->
+
+</section> <!-- Raster Lab -->

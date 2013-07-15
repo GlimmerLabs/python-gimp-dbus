@@ -1,0 +1,189 @@
+<section id = "GIMP Lab"><title>Laboratory: Getting Started with the GNU Image Manipulation Program</title>
+
+<section id="Introduction">
+<para>
+<emphasis>Summary: </emphasis> In this lab, you will experiment with GIMP, the GNU Image Manipulation program. You will also think about how you might give instructions to someone else to draw pictures using GIMP.
+</para>
+</section> <!-- Introduction -->
+
+<section id="Preparation"><title>Preparation</tile>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Start GIMP by clicking on the GIMP icons (It looks like a small dog) or by typing /home/rebelsky/bin/gimp. It will probably ask you whether it can install some files. Allow it to do so.
+</para>
+</listitem>
+<listitem>
+<para>
+Play for awhile with the various tools. Feel free to share ideas and questions with neighbors.
+</para>
+</listitem>
+</orderedlist>
+</section> <!-- Preparation -->
+
+<section id="Exercises"><title>Exercises</title>
+
+<section id="Exercise 1"><title>Exercise 1: Selecting, Stroking, and Filling</title>
+<para>
+The GIMP relies on its selection tools to support a variety of kinds of drawing. You may have noted that there are three selection tools: A rectangular tool, an oval tool, and a freehand (lasso) tool. The strategy one normally uses is to select some area and then fill or stroke (outline) that area.
+</para>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Create a new image.</para>
+</listitem>
+<listitem>
+<para>Set the foreground and background colors to something recognizable (say, red and yellow).</para>
+</listitem>
+<listitem>
+<para>Choose an interesting brush (like, one of the Calligraphic brushes or the Pencil Sketch brush, or maybe even the Pepper brush for the adventurous).</para>
+</listitem>
+<listitem>
+<para>Using the selection tool of your choice, select a moderately large area within the image.</para>
+</listitem>
+<listitem>
+<para>From the image's Edit menu, select Fill with BG Color. Observe what happens.</para>
+</listitem>
+<listitem>
+<para>From the image's Edit menu, select Stroke Selection... and click Stroke with a paint tool from the dialog that appears. Choose the Paintbrush as the paint tool. Click the Stroke button. Observe what happens.</para>
+</listitem>
+<listitem>
+<para>Select different areas and stroke and fill with different colors, paint tools, and stroke lines.</para>
+</listitem>
+</section> <!-- Exercise 1 -->
+
+<section id = "Exercise 2"> <title>Exercise 2: Multiple Selections</title>
+<para>
+By default, when you select a second area, GIMP forgets the previously selected area. However, there are ways to combine selections. In particular, when you hold down the shift key, you get one behavior and when you hold down the control key, you get another behavior. Let's see what the differences are.
+</para>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Select a large rectangular area.</para>
+</listitem>
+<listitem>
+<para>While holding down the shift key, select an overlapping rectangular area. What happens? What does that suggest about selection with the shift key?</para>
+</listitem>
+<listitem>
+<para> While holding down the control key, select an overlapping rectangular area. What happens? What does that suggest about selection with the control key?</para>
+</listitem>
+<listitem>
+<para>While holding down both the shift key and the control key, select yet another overlapping rectangular area. What happens? What does that suggest about selection with both keys?</para>
+</listitem>
+<listitem>
+<para>Stroke or fill the area you've just created.</para>
+</listitem>
+</orderedlist>
+
+<para>
+<emphasis>If you are unsure of any of your answers, you may wish to check the <link linkend="Notes">notes</link> on this problem.</emphasis>
+</para>
+</section> <!-- Exercise 2 -->
+
+<section id = "Exercise 3"> <title>Exercise 3: The Effect of Selections on Drawings</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Familiarize yourself with the use of the pencil tool.</para>
+</listitem>
+<listitem>
+<para>Familiarize yourself with the use of the line tool.</para>
+</listitem>
+<listitem>
+<para>Select a moderate-sized elliptical area in the middle of your drawing.</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen if you use the pencil tool to draw within the selected area?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen if you use the pencil tool to draw outside of the selected area?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen if you use the line tool to draw a line that starts outside of the selected area, goes through the selected area, and ends outside of the selected area?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen if you use the line tool to draw a line that never goes through the selected area?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>Why do you think we asked you to do this problem?</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 3 -->
+
+<section id ="Exercise 4"> <title>Exercise 4: A Simple Drawing</title>
+<para>Draw a smiley face using whatever tools you deem most appropriate.</para>
+</section> <!-- Exercise 4 -->
+
+<section id ="Exercise 5"> <title>Exercise 5: Writing Instructions</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Record, in English, instructions for replicating the drawing you just made. You can assume a reasonably competent reader. While I may attempt to replicate your instructions, I won't do my normal imitation of a “sentient but malicious computer” or of a “clueless computer scientist”. You should, however, be careful to talk about the positions with which various operations are done.</para>
+</listitem>
+<listitem>
+<para>Share your instructions with neighboring groups.</para>
+</listitem>
+<listitem>
+<para>Using one of the sets of instructions you received from a neighboring group, make a new drawing.</para>
+</listitem>
+<listitem>
+<para>Reflect on the strengths and weaknesses of the instructions you wrote and received.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 5 -->
+
+</section> <!-- Exercises -->
+
+<section id ="Extra"> <title>For Those With Extra Time</title>
+<para>
+Those of you who completed the first parts of this laboratory and still have time left may find it useful to do these additional exercises.
+</para>
+
+<section id ="Extra 1"> <title>Extra 1: A College Logo</title>
+<para>
+Start with the word No Limits and make an interesting logo. You might add colors, shadow, more. You might find the Filters and Script-Fu menus useful.
+</para>
+</section> <!-- Extra 1 -->
+
+<section id ="Extra 2"> <title>Extra 2: Logo Instructions</title>
+<para>
+Write, in English, instructions you might give someone else to create a logo like that. As in your previous set of instructions, be careful to specify important details, such as the location in a window in which to click.
+</para>
+</section> <!-- Extra 2 -->
+
+<section id ="Extra 3"> <title>Extra 3: Generalized Logo Instructions</title>
+<para>
+Generalize your instructions from the previous step so that they could be used with any phrase.
+</para>
+</section> <!-- Extra 3 -->
+
+</section> <!-- Extra -->
+
+<section id ="Notes"> <title>Notes</title>
+
+<section id ="Notes 1"> <title>Notes on Exercise 2: Selecting, Revisited</title>
+<para>
+The shift key serves as the add modifier. The newly selected area is added to the previous selection.
+</para>
+<para>
+The control key serves as the remove modifier. The newly selected area is removed from the previous selection.
+</para>
+<para>
+The combination of the shift key and the control key is the intersection modifier. Only stuff that is both in the the previously selected area and the newly selected area is selected.
+</para>
+</section> <!-- Notes 1 -->
+
+</section> <!-- Notes -->
+
+</section> <!-- GIMP Lab -->
+

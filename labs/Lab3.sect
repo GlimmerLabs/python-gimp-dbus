@@ -1,0 +1,411 @@
+<section id ="Python Lab"><title>Laboratory: Starting Python</title>
+
+<section id="Summary">
+<para>
+<emphasis>Summary: </emphasis>In this laboratory, you will begin to type Python expressions in Wing.  
+Python is the language in which we will express many of our algorithms this semester, and Wing is the environment in which we will write those.
+</para>
+</section> <!-- Summary -->
+
+<section id ="Introduction"><title>Introduction</title>
+<para>
+Many of the fundamental ideas of computer science are best learned by reading, writing, and executing small computer programs that illustrate them. One of our most important tools for this course, therefore, is a program-development environment, a computer program designed specifically to make it easier to read, write, and execute other computer programs. In this class, we will often use a program development environment named Wing, a language called Python, and an open-source graphics program called GIMP, to build images algorithmically.
+</para>
+<para>
+In the previous lab, we examined GIMP. In this lab, we will look at the other two parts of the equation: the Python language and the Wing program development environment.
+</para>
+</section> <!-- Introduction -->
+
+<section id ="Preparation"><title>Preparation</title>
+<para>
+If you successfully completed the Linux laboratory, you should have an icon for GIMP at the bottom of your screen. Click on that icon to start GIMP. A few GIMP windows should appear. First click the Filters menu and then hover over MediaScript. There should a menu that pops up, click the DBus Server.  
+Next, open Wing which should have a gray feather on a green background icon, or a brown box with tools icon. If you do not have Wing, download it <ulink url="http://www.wingware.com/downloads/wingide-101/4.1.13-1/binaries">here</ulink>.
+</para>
+
+<section id ="Importing"><title>Importing</title>
+<para>
+First create a file in Wing by going to File > New or using the shortcut Ctrl + N (control and N at the same time).  On the first line of Wing’s definitions pane (the upper, larger space for typing, with a 1 in the left-hand margin), type <code>from gimp_dbus_for_151 import *</code> . That imports the library called “gimp_dbus_for_151”, and all of the functions in it, which you will need for this course.  You must do this for every file you create, otherwise the computer will get confused, and crashed and burn. Save the file you just made as <emphasis>starting_python.py</emphasis> .  If you do not save it, it will not work. Then click the green play button up top, next to the search magnifying glass. Next, type in <code>from math import *</code> which will import the Python math library and all of the functions within the library which you will need for this lab. Then save and press the green play button again.
+</para>
+</section> <!-- Importing -->
+
+</section> <!-- Preparation -->
+
+<section id ="Exercises"><title>Exercises</title>
+
+<section id ="Exercise 1"><title>Exercise 1: Discovering Wing’s Interactions Pane</title>
+
+<section id ="Short Version 1"><title>Short Version</title>
+
+<itemizedlist>
+
+<listitem>
+<para>The lower text area is called the <emphasis>interactions pane</emphasis>.</para>
+</listitem>
+
+<listitem>
+<para>You type Python commands there and Wing responds.</para>
+</listitem>
+
+<listitem>
+<para>Type the first few examples from the reading: (do not include the >>> when you put these expressions into Wing, the triple brackets are to identify that the expression goes into the <emphasis>interactions pane</emphasis>.</para>
+
+<itemizedlist>
+<listitem>
+<para><code>>>> sqrt (144)</code></para>
+</listitem>
+<listitem>
+<para><code>>>> 3  +  4</code></para>
+</listitem>
+<listitem>
+<para><code>>>> 3 +  4  * 5</code></para>
+</listitem>
+<listitem>
+<para><code>>>> (3 + 4) * 5</code></para>
+</listitem>
+<listitem>
+<para><code>>>> “Hello” + “ “ + “World”</code></para>
+</listitem>
+</itemizedlist>
+
+</listitem>
+</itemizedlist>
+</section> <!-- Short Version 1 -->
+
+<section id ="Detailed Version 1"><title>Detailed Version</title>
+<para>
+The Wing has two panes, one for definitions and one for interaction.  Just as in the reading, we'll begin by considering the interactions pane.
+The best way to understand the interactions pane is to use it. So, let's try the first few examples from the reading. Type each in the interactions pane, hit return, and see if you get the same value.
+</para>
+<programlisting>
+>>> sqrt (144)
+12
+
+>>> 3 + 4
+7
+
+>>> 3 + 4  * 5
+23
+
+>>> (3 + 4) * 5
+35
+
+>>>“Hello” + “ “ + “World”
+‘Hello World’
+</programlisting>
+</section> <!-- Detail Version 1 -->
+
+</section> <!-- Exercise 1 -->
+
+<section id ="Exercise 2"><title>Exercise 2: Reflection: How Do You Know It's Correct?</title>
+
+<section id ="Short Version 2"><title>Short Version</title>
+<itemizedlist>
+<listitem>
+<para>Try typing <code>>>> sqrt (137641)</code></para>
+</listitem>
+
+<listitem>
+<para>Reflect on how you know whether or not the answer is correct.</para>
+</listitem>
+</itemizedlist>
+</section> <!-- Short Version 2 -->
+
+<section id ="Detailed Version 2"><title>Detailed Version</title>
+<para>
+Of course, the computer is using some algorithm to compute values for the expressions you enter. How do you know that the algorithm is correct? One reason that you might expect it to be correct is that Python is a widely-used programming language (and one that we've asked you to use). However, there are bugs even in widely-used programs. You may recall a controversy a few years back in which it was discovered that a common computer chip computed a few specific values incorrectly, and no one had noticed. More recently, it was found that the output routine in Microsoft Excel produced the wrong output for a few values. 
+</para>
+<para>
+Each time you do a computation, particularly a computation for which you have designed the algorithm, you should consider how you might verify the result. (You need not verify every result, but you should have an idea of how you might do so.) When writing an algorithm, you can then also use the verification process to see if your algorithm is right.
+Let's start with a relatively simple example. Suppose we ask you to ask Wing to compute the square root of 137641. You should be able to do so by entering an appropriate Python expression:
+<code>>>> sqrt(137641)</code>
+</para>
+<para>
+Python will give you an answer. How can you test the correctness of this answer? What if you don't trust Wing’s multiplication procedure? (Be prepared to answer this question for the class as a whole.)
+</para>
+</section> <!-- Detailed Version 2 -->
+
+</section> <!-- Exercise 2 -->
+
+<section id ="Exercise 3"><title>Exercise 3: Wing’s Definitions Pane</title>
+
+<section id ="Short Version 3"><title>Short Version</title>
+
+</section> <!-- Short Version 3 -->
+<itemizedlist>
+<listitem>
+<para>The interactions pane is temporary. The top pane, called the <emphasis>definitions pane</emphasis> is more permanent.</para>
+</listitem>
+<listitem>
+<para>When you click Run, the interactions pane is erased and the instructions in the definitions pane are executed.</para>
+</listitem>
+<listitem>
+<para>Enter the definitions from the reading.</para>
+</listitem>
+<listitem>
+<para>Ask Wing to compute the average and maximum grade.</para>
+</listitem>
+</itemizedlist>
+
+<section id ="Detailed Version 3"><title>Detailed Version</title>
+<para>
+As you may recall from the reading, the upper text area in the Wing window, the definitions pane, is used when you want to prepare a program “off-line”, that is, without immediately executing each step. Instead of processing what you type line by line, Wing waits for you to click on the green button  before starting to execute the program in the definitions pane. If you never click on that button, fine  -- your program is never executed.
+</para>
+<para>
+Let's try using the definitions pane. First, enter the following in that pane:  
+</para>
+<para>
+<programlisting>
+grade1 =  89
+grade2 = 66
+grade3  = 79
+grade4  = 85
+grade5 = 100
+grade6  = 91
+</programlisting>
+</para>
+<para>Next, try computing the average in the interactions pane:</para>
+<para>
+<code>>>> (grade1 + grade2 + grade3 + grade4 + grade5 + grade6) /  6</code>
+</para>
+<para>
+It is likely that you got an error message. Why? (Please make sure you have an answer before going on.) Next, click Run (the green play button up top) and try entering the expression again. (Remember, the up arrow will bring back the previous expression.)
+Note: we've formatted the code for the definitions pane differently than we've formatted the code for the interactions pane. Code that is to go into the interactions pane will be preceded with >>> , remember not to copy the >>> if you copy and paste these expressions into the interactions pane. We'll try to be consistent, so that you can better tell where instructions are to go.
+</para>
+</section> <!-- Detailed Version 3 -->
+</section> <!-- Exercise 3 -->
+
+
+<section id ="Exercise 4"><title>Exercise 4: Definitions, Revisited</title>
+<para>
+Let's try another definition. Define name as your name in quotation marks. For example:
+<code>name = “Mark”</code>
+</para>
+<para>
+Click Run and then find the value of the following expression:
+<code>>>>  "Hello " + name</code>
+</para>
+</section> <!-- Exercise 4 -->
+
+
+<section id ="Exercise 5"><title>Exercise 5: Saving to Files</title>
+<para>
+Let's make sure that you can save and restore the work you do in the definitions pane.
+</para>
+
+<itemizedlist>
+<listitem>
+<para>Save this file.</para>
+</listitem>
+<listitem>
+<para>Close the Wing window.</para>
+</listitem>
+<listitem>
+<para>Restart Wing.</para>
+</listitem>
+<listitem>
+<para>In Wing, reopen “starting_python”</para>
+</listitem>
+<listitem>
+<para>Click Run.</para>
+</listitem>
+<listitem>
+<para>In the interactions pane, enter the expressions from above.</para>
+<itemizedlist>
+<listitem>
+<para><code>>>> (grade1 + grade2 + grade3 + grade4 + grade5 + grade6) / 6</code></para>
+</listitem>
+<listitem>
+<para><code>>>> "Hello " + name</code></para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</section> <!-- Exercise 5 -->
+
+
+<section id ="Exercise 6"><title>Exercise 6: Importing Definitions, revised.</title>
+<para>
+Let's try using the definitions you created without having them open in the definitions pane.  Yes, you did this for prep but it so important that you will doing it again. 
+</para>
+
+<itemizedlist>
+<listitem>
+<para>Add a new grade, grade7, to “starting_python.py”.</para>
+</listitem>
+<listitem>
+<para>Save “starting_python.py”, but do not run it.</para>
+</listitem>
+<listitem>
+<para>Close the Wing window.</para>
+</listitem>
+<listitem>
+<para>Restart Wing and open a new window.  </para>
+</listitem>
+<listitem>
+<para>Import “starting_python”</para>
+</listitem>
+<listitem>
+<para>In the interactions pane, type grade7. You should now see a value.</para>
+</listitem>
+</itemizedlist>
+</section> <!-- Exercise 6 -->
+
+
+<section id ="Exercise 7"><title>Exercise 7: A Library</title>
+<para>
+Throughout the semester, you will find yourself defining a number of values (including algorithms, which Python considers as values). So that you don't have to go back to various places to look for things you have done before, we suggest that you create a file, <emphasis>library.py</emphasis> in which you enter values and functions that you'll need again and again.
+Open a new window or tab and define two values, first_name, which should have the value of your first name, and last_name, which, should have the value of your last name.
+For example:
+<code>
+first_name  = "Mark"
+</code>
+<code>
+first_name  = "Mark"
+</code>
+</para>
+</section> <!-- Exercise 7 -->
+
+
+<section id ="Exercise 8"><title>Exercise 8. Other Notations</title>
+<para>
+What happens if you use less traditional mathematical notation? Let's explore that question.
+Type each of the following expressions in the interactions pane and see what reaction you get.
+</para>
+
+<itemizedlist>
+<listitem>
+<para><code>>>> + 2 3</code></para>
+</listitem>
+<listitem>
+<para><code>>>> * 7  9</code></para>
+</listitem>
+<listitem>
+<para><code>>>> sqrt(49)</code></para>
+</listitem>
+</itemizedlist>
+
+<para>
+You may wish to read the <link linkend="Notes">notes</link> on this problem for an explanation of the results that you get.
+</para>
+</section> <!-- Exercise 8 -->
+
+
+<section id ="Exercise 9"><title>Exercise 9: Showing Images</title>
+<para>
+First open “starting_python.py”, if they are not already up.  Save and run. So far, it has been hard to tell that Wing is associated at all with the GIMP. However, you can use Wing to control GIMP in a variety of ways. We'll start with a simple one. We will load an image and then show that image. The procedure <code>image_load (file_name)</code>  loads an image from a file and returns an integer called an image_id that your programs can use to identify the image. The procedure <code>image_show (image_id)</code> shows that image.
+</para>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>In the interactions pane, write a Python expression to load the image "/home/glimmerteam32/Desktop/LucyThePython.jpg". When you run that expression, you should see a number. Make a note of that number.</para>
+</listitem>
+<listitem>
+<para>In the interactions pane, write a Python expression to show the image.</para>
+</listitem>
+<listitem>
+<para>Save a picture of your choice to your desktop.</para>
+</listitem>
+<listitem>
+<para>In the interactions pane, write a Python expression to load that image. The full name of the image will be something like "/home/<emphasis>username</emphasis>/Desktop/<emphasis>file</emphasis>.jpg".</para>
+</listitem>
+<listitem>
+<para>Write a python expression that tells GIMP to show the image.</para>
+</listitem>
+<listitem>
+<para>As you may have observed, it can be a bit of a pain to have to type in the full path of a file. Typically, we write definitions to avoid retyping. In your library.py, use <code>=</code> to give a name to your downloaded image. Save the updated library.py.</para>
+</listitem>
+<listitem>
+<para>Make sure that your updated library works by entering the following in a new Wing window or tab: <code>from  library import *</code></para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 9 -->
+
+</section> <!-- Exercises -->
+
+
+<section id ="Extras"><title>For Those With Extra Time</title>
+
+<section id ="Extra 1"><title>Extra 1: Definitions Pane Revisited</title>
+<para>
+As you observed in the primary exercises for this laboratory, you can use the definitions pane to name values that you expect to use again (or that you simply find it more convenient to refer to with a mnemonic). So far, all we have named is simple values. However, you can also name the results of expressions.
+</para>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>In the definitions pane, write a definition that assigns the name seconds_per_minute to the value 60.</para>
+</listitem>
+</orderedlist>
+<listitem>
+<para>In the definitions pane, write a definition that assigns the name minutes_per_hour to the value 60.</para>
+</listitem>
+<listitem>
+<para>In the definitions pane, write a definition that assigns the name hours_per_day to the value 24.</para>
+</listitem>
+<listitem>
+<para>In the definitions pane, write a definition that assigns the name seconds_per_day to the product of those three values. Note that you should use the following expression to express that product:
+<code>seconds_per_minute * minutes_per_hour * hours_per_day</code></para>
+</listitem>
+<listitem>
+<para>Run your definitions and confirm in the interactions pane that seconds_per_day is defined correctly.</para>
+</listitem>
+<listitem>
+<para>Add these four definitions to the library.py file you created earlier.</para>
+</listitem>
+</section> <!-- Extra 1 -->
+
+<section id ="Extra 2"><title>Extra 2: Grading</title>
+<para>
+Let's play for a bit with how one might use Wing to compute grades. (We teach you this, in part, so that you can figure out your estimated grade in this class and others.) Let's define five names, grade1 through grade5 that potentially represent grades on five homework assignments.
+</para>
+
+<para>
+<programlisting>
+grade1 =  95
+grade2 = 93
+grade3 = 105
+grade4 = 30
+grade5 = 80
+</programlisting>
+</para>
+
+<para>
+Looking at those grades, you might observe that the student seems to have spent a bit of extra work on the third assignment, but that the extra work so disrupted the student's life that the next assignment was a disaster. (You may certainly analyze the grades differently.)
+</para>
+
+<orderedlist numeration="loweralpha">
+
+<listitem>
+<para>Write a definition that assigns the name average_grade to the average of the grades.
+Many faculty members discard these “outliers”, with a grading policy of “I take the average of your grades after dropping the highest grade and the lowest grade”.</para>
+</listitem>
+<listitem>
+<para>Write a definition that assigns the name highest_grade to a computed highest grade. (That is, highest-grade should remain correct, even if I change the values associated with grade1 through grade5.) In writing this definition, you may find the <code>max</code> procedure useful.</para>
+</listitem>
+<listitem>
+<para>Write a definition that assigns the name lowest_grade to a computed lowest grade. You may find the <code>min</code> procedure useful.</para>
+</listitem>
+<listitem>
+<para>Write a definition that assigns the name modified_average to the modified average grade (that is, the grade that results from dropping the lowest and highest grades and then averaging the result).</para>
+</listitem>
+</orderedlist>
+</section> <!-- Extra 2 -->
+
+</section> <!-- Extras -->
+
+<section id ="Notes"><title>Notes on the Exercises</title>
+
+<section id ="Note 1"><title>Notes on Exercise 8: Other Notations</title>
+<code>>>> + 2  3</code>
+<para>
+The problem with this is that the syntax is not correct. It should be <code> 2 + 3</code>.
+</para>
+<code>>>> (sqrt 49)</code>
+<para>
+Here, the function is never called. () in Python usually encompass the parameters of a function, but here it surrounds the function and the parameter, and so you will get an error.
+</para>
+</section> <!-- Notes 1 -->
+
+</section> <!-- Notes -->
+
+
+</section> <!-- Python Lab -->

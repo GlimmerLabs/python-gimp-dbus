@@ -1,0 +1,277 @@
+<section id="scripting-gimp-tools-lab"><title>Laboratory: Scripting the GIMP Tools</title>
+
+<section id="intro">
+<para>
+  <emphasis>Summary:</emphasis> In this laboratory, you will explore how one writes Python programs that instruct the GIMP to create some simple images.
+</para>
+
+<orderedlist numeration="loweralpha">
+  <listitem>
+    <para>Start GIMP.</para>
+  </listitem>
+
+  <listitem>
+    <para>Run the DBus server so that GIMP and Python can  communicate by going to <guimenu>Filters</guimenu> > <guisubmenu>MediaScript</guisubmenu> > <guimenuitem>DBus Server</guimenuitem>.</para>
+  </listitem>
+
+  <listitem>
+    <para>Start Wing.</para>
+  </listitem>
+
+  <listitem>
+    <para>At the end of this lab is a list of all the important procedures discussed in the corresponding reading. Quickly review that list. </para>
+  </listitem>
+
+</orderedlist>
+
+</section><!--intro-->
+
+<section id="exercises"><title>Exercises</title>
+
+<section id="exercise1"><title>Exercise 1: Simple Faces</title>
+<para>
+  Here are the instructions for drawing a simple face from the reading.
+</para>
+
+<programlisting>
+smiley = image_new(200, 200)
+
+image_show(smiley)
+
+# Draw the eyes
+
+image_select_ellipse (smiley, "REPLACE", 50, 60, 30, 20)
+
+image_select_ellipse (smiley, "ADD", 120, 60, 30, 20)
+
+context_set_fgcolor ("white")
+
+image_fill_selection (smiley)
+
+context_set_fgcolor ("black")
+
+context_set_brush ("Circle Fuzzy (07)")
+
+image_stroke_selection (smiley)
+
+image_select_ellipse (smiley, "REPLACE", 60, 60, 10, 20)
+
+image_select_ellipse (smiley, "ADD", 130, 60, 10, 20)
+
+context_set_fgcolor ("lightsteelblue")
+
+image_fill_selection (smiley)
+
+# Smile
+
+image_select_ellipse (smiley, "REPLACE", 40, 60, 120, 100)
+
+image_select_ellipse (smiley, "SUBTRACT", 40, 45, 120, 100)
+
+context_set_fgcolor ("white")
+
+image_fill_selection (smiley)
+
+context_set_fgcolor ("red")
+
+context_set_brush ("Calligraphic Brush#3")
+
+image_stroke_selection (smiley)
+
+# Get ready to show
+
+image_select_none (smiley)
+context_update_displays ()
+</programlisting>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+  <para>Copy these instructions into your definitions pane. Read through the instructions to see what image you predict they will draw. </para>
+</listitem>
+
+<listitem>
+  <para>Click Run and observe what happens. If all has gone well, you should see a new image with a smiling face. if it hasn’t gone well, check the quotes.</para> 
+</listitem>
+
+<listitem>
+  <para>In the interactions pane, write instructions for drawing a nose onto the image. Your instructions might look something like the following:</para>
+
+  <para>
+    <userinput>>>> image_select_rectangle (smiley, “REPLACE”, 90, 90, 20, 20)</userinput>
+  </para>
+  <para>
+    <userinput>>>> image_select_ellipse (smiley, “INTERSECT”, 80, 85, 30, 30)</userinput>
+  </para>
+  <para>
+    <userinput>>>> context_set_fgcolor ("green")</userinput>
+      <!--We haven't got strings working yet-->
+  </para>
+  <para>
+    <userinput>>>> image_fill_selection (smiley)</userinput>
+  </para>
+
+  <para>
+    If the instructions don't seem to change the image, try clicking on the image window or typing <code>context_update_displays()</code>.
+  </para>
+
+</listitem>
+  <para>
+    It is possible to clear an image by selecting everything and then clearing the selection. Do so now.
+  </para>
+
+  <para>
+    <userinput>>>> image_select_all (smiley)</userinput>
+  </para>
+  <para>
+    <userinput>>>> image_clear_selection (smiley)</userinput>
+  </para>
+  <para>
+    <userinput>>>> context_update_displays ()</userinput>
+  </para>
+
+<listitem>
+  <para>
+    Sometimes it's more fun to see an image drawn little-by-little. MediaScript allows you to pause a bit between actions, as when you want to show each step in the creation of a drawing. In particular, the procedure <methodname>usleep (n)</methodname> pauses for <emphasis>n</emphasis> microseconds. Hence, if you want to pause for a half a second, you might write <code>usleep (500000)</code>.
+  </para>
+
+  <para>
+    Edit the instructions in the definitions pane as follows. Immediately after each call to <methodname>image-fill-selection</methodname> and <methodname>image-stroke-selection</methodname
+>, insert instructions to update the displays and then sleep half a second. (Hint: Type the instructions once, then use copy and paste.)
+Run your modified code.
+  </para>
+</listitem>
+</orderedlist>
+</section><!--exercise1-->
+
+<section id="exercise2"><title>Exercise 2</title>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+  <para>
+    Open a new Wing window and write a series of instructions in the definitions pane to draw a face different than the sample we gave above. You should try a different shape of face, different brushes or colors, and different facial features. 
+  </para>
+</listitem>
+
+<listitem>
+  <para>
+    What do you expect to happen if you change the size of the image in which you're drawing, such as a 100x100 image or a 300x300 image?
+  </para>
+</listitem>
+
+<listitem>
+  <para>
+    Check your answer experimentally.
+  </para>
+</listitem>
+
+<listitem>
+  <para>
+    If changing the size of the image yielded results that you found undesirable, summarize how you might fix them. (Don't fix them right now, just indicate how you might fix them.)
+  </para>
+</listitem>
+</orderedlist>
+</section><!--exercise2-->
+
+<section id="exercise3"><title>Exercise 3</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+  <para>
+    Write a series of instructions that create a new image and then draw a house in in the image.
+  </para>
+</listitem>
+
+<listitem>
+  <para>
+    Suppose we start by defining two names, width and height. Describe how you might change your house code to take those values into account.
+  </para>
+
+  <programlisting>
+width = 300
+height = 200
+canvas = image_new (width, height)
+...
+  </programlisting>
+</listitem>
+</orderedlist>
+</section><!--exercise3-->
+
+<section id="exercise4"><title>Exercise 4</title>
+<para>
+Suppose we've defined picname as a string naming an image: <code>picname = "/home/glimmerteam32/Desktop/Lucy.jpg"</code>
+</para>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+  <para>
+    Write a series of instructions to load and show the picture.
+  </para>
+</listitem>
+
+<listitem>
+  <para>
+    Write a series of instructions to draw a diagonal line from the upper-left-hand-corner to the lower-right-hand corner of the image. Note that you'll need to use <methodname>image_width</methodname> and <methodname>image_height</methodname> to determine the width and height of the image.
+  </para>
+</listitem>
+
+<listitem>
+  <para>
+    Write a series of instructions to put some kind of border at the edges of the image. (E.g., select a rectangle ten pixels from each edge and then stroke that rectangle.)
+  </para>
+</listitem>
+</orderedlist>
+</section><!--exercise4-->
+
+<section id="Extras"><title>For Those with Extra Time</title>
+
+<section id="extra1"><title>Extra 1: Generalizing smiley faces</title>
+<para>
+  Revise your instructions from Exercise 2 so that the drawing adapts to the size of the image.
+Recall that you can obtain the width and height of the image using the <methodname>image_width</methodname> and <methodname>image_height</methodname> procedures.
+</para>
+</section><!--extra1-->
+</section> <!--extras-->
+</section> <!--exercises-->
+
+<section id=reference><title>Reference</title>
+
+<variablelist>
+  <xi:include href="../reference/image_new.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/image_load.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/image_show.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</variablelist>
+
+<variablelist>
+  <xi:include href="../reference/image_blot.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/image_draw_line.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</variablelist>
+
+<variablelist>
+  <xi:include href="../reference/image_select_ellipse.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/image_select_rectangle.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/image_select_all.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/image_select_nothing.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</variablelist>
+
+<variablelist>
+  <xi:include href="../reference/image_fill_selection.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/image_stroke_selection.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</variablelist>
+
+<variablelist>
+  <xi:include href="../reference/context_set_brush.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/context_set_fgcolor.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/context_list_brushes1.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="../reference/context_list_brushes2.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</variablelist>
+
+<variablelist>
+  <xi:include href="../reference/context_update_displays.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</variablelist>
+
+<variablelist>
+  <xi:include href="../reference/usleep.short" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</variablelist>
+
+</section><!--reference-->
+
+</section><!--scripting gimp tools lab-->

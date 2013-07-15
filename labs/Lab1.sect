@@ -1,0 +1,519 @@
+<section id = "Linux Lab"> <title> Laboratory: Getting Started with Linux </title>
+
+
+<section id="Introduction">
+<para>
+<emphasis> Summary: </emphasis> This laboratory reviews some mechanics related to the use of the Computer Science Linux Network for CSC151. Specifically, this lab gives you the opportunity to explore:
+</para>
+
+<para>
+<itemizedlist mark = "opencircle">
+	<listitem>
+	<para>Logging in</para>
+	</listitem>
+	<listitem>
+	<para>The Linux/Gnome Window Environment</para>
+	</listitem>
+	<itemlist>
+	<para>Practice with a Terminal Window: Changing Your Password</para>
+	</itemlist>
+	<itemlist>
+	<para>Iceweasel/Firefox</para>
+	</itemlist>
+	<itemlist>
+	<para>GIMP and MediaScript </para>
+	</itemlist>
+	<itemlist>
+	<para>Working with Multiple Desktops</para>
+	</itemlist>
+	<itemlist>
+	<para>G.Finishing Up and Logging Out</para>
+	</itemlist>
+</itemizedlist>
+
+
+<para>
+<emphasis>Please don't be intimidated!</emphasis> Although this lab contains many details which may seem overwhelming at first, these mechanics will become familiar rather quickly. Feel free to talk to the instructor or the mentor if you have questions or want additional help!
+</para>
+
+</section> <!-- Introduction -->  
+
+
+<section id = "Logging in"> 
+
+<para>
+<title> Logging in </title>
+</para>
+
+<para>
+<emphasis> Short Version </emphasis>
+</para>
+
+<para>
+<itemizedlist mark = 'opencircle'>
+	<itemlist>
+	<para>On the computer in front of you, you should see a small window that asks you to log in. If you don't see such a window, try hitting a key on the keyboard or clicking the power button on the monitor.</para>
+	</itemlist>
+	<itemlist>
+	<para>Enter your username. Press the Enter key</para>
+	</itemlist>
+	<itemlist>
+	<para>Enter your password. Press the Enter key. </para>
+	</itemlist>
+	<itemlist>
+	<para>Get help if those previous two steps don't work.</para>
+	</itemlist>
+</itemizedlist>
+
+<para>
+<emphasis> Long Version </emphasis>
+</para>
+
+<para>
+To use any of the computers on Grinnell's Linux network, one must log in, identifying oneself by giving a username and a password. You will receive a Linux username and password from the instructor if you did not already have one. If you have not received a Linux username and password, or if you have forgotten either one, please tell your instructor.
+</para>
+
+<para>
+When a Linux workstation is not in use, it will display a login screen with a space into which one can type one's username, and then later, one’s password. (If the workstation's monitor is dark, move the mouse a bit and the login screen will appear.) To begin, move the mouse onto any part of the box containing the login box. Type in your user name, in lowercase letters, and press the Enter key. The login screen will be redrawn to acknowledge your user name and to ask for your password; type it into the space provided and press Enter. (Because no one else should see your password, it will show up as black dots as you type it).
+</para>
+
+<para>
+At this point, a computer program that is running on the workstation consults a table of valid usernames and passwords. If it does not find the particular combination that you have supplied, it prints a brief message saying that the attempt to login was unsuccessful and then returns to the login screen -- inviting you to try again. Consult the instructor or the system administrator if your attempts to log in are still unsuccessful.
+</para>
+
+</section> <!-- logging in --> 
+
+<section id="The Linux/Gnome Window Environment">
+
+<para>
+<title> The Linux/Gnome Window Environment </title>
+</para>
+
+<emphasis> Short Version </emphasis>
+<itemizedlist mark = 'opencircle'>
+	<listitem>
+	<para>You'll see something that looks somewhat like Microsoft Windows, but also somewhat different.</para>
+	</listitem>
+	<listitem>
+	<para>Icons at the bottom of the screen can be used to start programs.</para>
+	</listitem>
+</itemlist>
+
+<para>
+<emphasis> Detailed Version <emphasis>
+</para>
+
+<para>
+Once you have logged in, a control panel will appear at the bottom of the screen. Some other windows also may be visible in other parts of your screen. All of these areas are managed by a special program, called a windowing system. On our network, login chores and other administrivia are handled by a program or operating system, called Linux, and the primary user interaction is handled by a windowing system, called Gnome.
+</para>
+
+</section><!-- The Linux/Gnome Window Environment -->
+
+<section id="Practice with a Terminal Window: Changing Your Password">
+
+<title> Practice with a Terminal Window: Changing Your Password </title>
+
+<para>
+<emphasis> Short Version </emphasis>
+</para>
+
+<itemizedlist mark='opencircle'>
+	<listitem>
+	<para> Click on the picture of the small computer monitor in the taskbar. A new window, called the Terminal, will appear.</para>
+	</listitem>
+	<listitem>
+	<para>Type yppasswd and hit the Enter key to change your password. You will be prompted for your old password and your new password. (The letters you type will not appear.)
+</para>
+	</listitem>
+	<listitem>
+	<para>Type exit and then hit the Enter key to close the window.</para>
+</itemizedlist>
+
+
+<para> 
+<emphasis> Detailed Version </emphasis> 
+</para>
+
+<para>
+While we can run several programs directly, we will need to invoke others by name. The computer program that reads and responds to such invocations is called the shell, and your interactions with the shell takes place in a window generated by a program called a terminal emulator, or terminal for short.
+</para>
+
+<para>
+You may already have a Terminal window on screen. If not, you can start one at any time by moving the pointer onto the small monitor icon at the bottom middle of the front panel, and clicking with the left mouse button. Shortly a window appears, displaying the shell prompt -- the name of the workstation on which the shell is running, followed by a dollar sign. This prompt indicates that the shell is ready to receive instructions.
+</para>
+
+<para>
+You type in such instructions using the keyboard. Move the mouse pointer into the Terminal window and click the left mouse button to make the window active. Notice that the window frame changes color following the click, indicating that the window has become active.To get rid of the Terminal window, press Ctrl/D. That is, hold down either of the keys marked Ctrl, just below the Shift keys, and simultaneously press the D key. (On our workstations' keyboards, the keys marked Ctrl (“control”) and Alt (“alt” or “meta”) are somewhat like Shift keys, in the sense that they modify the effect of other keys that are pressed simultaneously.) The shell program interprets Ctrl/D as a signal that you have no more instructions for it and halts, and the terminal emulator closes the window automatically once the shell stops running. Alternatively, you may close a window by moving the mouse to the x at the top-right of the window, and clicking the left mouse button. Finally, you can usually type exit to close a terminal window.
+</para>
+
+<para>
+It is a good idea to change the password associated with your account shortly after you receive it and every few months thereafter. The program that one uses to change one's password is by its name, “yppasswd”.
+<para>
+
+<para>
+Choose a new password. Make it something that you can easily remember, but not an English word or a name, since it is easy for system crackers to break in by guessing your password if you choose it from one of those categories.
+</para>
+
+<para>
+Open a terminal window, select the window by clicking the left mouse button in it, and type the word yppasswd. The password program prompts you once for your old password -- the one you logged in with -- and twice for your new password. Note that nothing will appear when you type your password. To ensure that no one eavesdrops on your password (or even the length of your password), the workstation leaves the cursor in place while you are typing passwords.
+If you give your old password correctly and the two copies of your new password match, the program substitutes the new password for the old one in the table that the login programconsults. The old password is discarded and will not be recognized in subsequent logins. (If the attempt to change the password fails for any reason, however, the old password is retained.) 
+</para>
+
+<para>
+A typical interaction to successfully change a password looks like this:
+</para>
+
+<code>
+bourbaki$ yppasswd
+Changing NIS account information for user on jacobi.math.grin.edu.
+Please enter old password:
+Changing NIS password for user on jacobi.math.grin.edu.
+Please enter new password:
+Please retype new password:
+</code>
+
+<para>
+The NIS password has been changed on jacobi.math.grin.edu.
+</para>
+
+<code>
+bourbaki$ 
+</code>
+
+<para>
+After running the yppasswd program, the shell takes over again and issues another prompt. You can invoke as many programs as you like from the shell, one after another, before pressing Ctrl/D or exit to leave the shell.
+</para>
+
+</section> <!-- Practice with a Terminal Window: Changing Your Password-->
+
+<section id="Iceweasel/Firefox">
+
+<title> Iceweasel/Firefox </title>
+
+<para>
+<emphasis> Short Version </emphasis>
+</para>
+
+
+<itemizedlist mark = 'opencircle'>
+	<listitem>
+	<para> Start Iceweasel by clicking on the picture of the small white creature grasping a purple sphere.</para>
+	</listitem>
+	<listitem>
+	<para>Agree to any dialog boxes that appear. They shouldn't appear again.</para>
+	</listitem>
+	<listitem>
+	<para>Learn how to get to the front door for this class.</para>
+	</listitem>
+</itemizedlist>
+	
+
+<para>
+<emphasis> Detailed Version </emphasis>
+</para>
+While some materials for this course will be available in paper, almost everything for this course (including electronic versions of paper materials) will be available on the World Wide Web. In this class, we use a version of the Firefox browser called Iceweasel. Almost all of the materials for this course will be distributed over the Web. To use Iceweasel to view materials, such as this course's syllabus and this lab, you may follow these steps:
+</para>
+
+<para>
+First, prepare to use the World Wide Web by clicking on the Iceweasel icon (the picture with small white creature holding a purple sphere). Iceweasel is a version of Mozilla Firefox renamed to accommodate trademark issues. More info on the relationship between Firefox and Iceweasel can be found at:
+</para>
+<para>
+ http://en.wikipedia.org/wikiNaming_conflict_between_Debian_and_Mozilla
+</para>
+<para>
+We will generally use the names interchangeably.
+</para>
+<para>
+The first time you run Iceweasel on our network, two message boxes might appear.
+</para>
+
+
+<itemizedlist mark = 'opencircle'>
+	<listitem>
+<para>One box might ask you to consent to the terms of a licensing agreement.</para>
+	</listitem>
+	<listitem>
+	<para>One box might request permission to create some configuration files in your home directory.</para>
+	</listitem>
+<itemizedlist>
+	
+
+<para>
+You should approve of any requests by clicking on the appropriate word. The pop-up boxes then disappear; you should not see them on subsequent uses of Iceweasel.
+</para>
+
+<para>
+Initially, Iceweasel displays a World Wide Web document containing some default information. You should switch to the page http://www.cs.grinnell.edu/zero-one.xhtml, which is an entry point to the Computer Science Department's Web site.
+</para>
+
+<para>
+We expect that most of your are already familiar with a Web browser. If not, please consult with one of us or with one of your colleagues.
+</para>
+
+<para>
+To find material for this course, scroll down the “origin” page for the Computer Science Department to the list of course front doors. Now scroll down this page to find the entry for this course, Functional Problem-Solving, Section 1, and click on it to locate the front door for this course. Next, click on the Syllabus link to view the current draft of the semester's schedule.
+
+You can also connect to the Web page for this class by selecting <emphasis> Open Web Location </emphasis> from the <emphasis> File </emphasis> menu and then entering 
+</para>
+<para>
+
+http://www.cs.grinnell.edu/~rebelsky/Courses/CS151/2010S/.
+</para>
+
+<para>
+<emphasis> Iceweasel Options </emphasis>
+</para>
+<para>
+<emphasis> Short Version </emphasis> 
+</para>
+
+<para>
+    Select Preferences from the Edit menu and update your home page to something reasonable like this course's front door or the Outlook Web Access page.
+
+</para>
+
+<para>
+<emphasis> Detailed Version </emphasis> 
+</para>
+
+<para>
+Each Linux user can configure Iceweasel to reflect her or his own preferences. Between logins, these preferences are stored in a file in the user's home directory; when Iceweasel is started during a later session, they are reinstated from that file.
+</para>
+
+<para>
+Every user of Iceweasel in this class should establish a base page, a starting point for browsing. Here are the Uniform Resource Locators or URLs of some good choices:
+</para>
+
+<itemizedlist mark='opencircle'>
+	<listitem>
+	<para>The front-door for this course: </para>
+	</listitem>
+	<listitem>
+	<para>http://www.cs.grinnell.edu/~rebelsky/CoursesCS151/2010S/</para>
+	</listitem>
+	<listitem>
+	<para>The departmental origin: http://www.cs.grinnell.edu/zero-one.xhtml</para>
+	</listitem>
+	<listitem>
+	<para>Grinnell College's front-door page: http://www.grinnell.edu</para>
+	</listitem>
+	<listitem>
+	<para>Grinnell's Microsoft Outlook Web Access: http://mail.grinnell.edu</para>
+	</listitem>
+	<listiem>
+	<para> A page you create.</para>
+	</listitem>
+</itemizedlist>
+
+<para>
+To establish your base page, within Iceweasel, bring up the <emphasis> Edit </emphasis> menu from the menu bar and select the <emphasis> Preferences </emphasis> operation. A pop-up window appears, allowing you to configure many features of the general appearance of Iceweasel. Choose the <emphasis>Main</emphasis> option, if it has not been chosen already. The rectangle labeled Home Page contains the URL of some document that serves as the default. Replace the contents of this rectangle with the URL of your choice. (This does not have to be a permanent change; you can change your mind about this configuration at any time within Iceweasel.)
+</para>
+
+<para>
+To erase the current contents of the Home Page Location(s) box, move the mouse pointer to the left of the first character in the box, press the left mouse button and hold it down, and drag the mouse pointer rightwards until the entire URL is displayed in reverse video, white letters on a black background. Then release the left mouse button and type the new URL; the old one will vanish as soon as you start typing. Once you have entered the new URL, move the mouse pointer onto the button marked OK at the bottom of the pop-up window and click on it with the left mouse button.
+</para>
+
+<para>
+You can, of course, simply navigate to the page you want to use as your home page and then click on Use Current Pages.
+</para>
+
+<para>
+You may note that the button says “Pages” (plural) rather than “Page” (singular). Since Iceweasel permits tabbed browsing (that is, you can have “tabs” within the same window that you switch between), you can have a home set of tabs. Particularly obsessive people might want to set up a sequence of tabs with say, links to outlines, labs, readings, and beyond.
+</para>
+
+<para>
+<emphasis> Enabling Scripting </emphasis>
+</para>
+
+<para>
+As you may know, there has been a rise in malicious programs (scripts) that reside on Web pages. For that reason, our system administrator has installed the <emphasis>NoScript </emphasis> plugin which, by default, disallows scripts from every site.
+</para>
+
+<para>
+However, many common services on campus, including Outlook Web Access and PioneerWeb, rely on scripts. Hence, we recommend that you enable scripting for sites in the grinnell.edu domain.
+</para>
+
+<itemizedlist>
+	<listitem>
+	<para>Navigate to a location in the grinnell.edu domain (such as http://www.mail.grinnell.edu).</para>
+	</listitem>
+	<listitem>
+	<para>Click on the symbol in the lower-right-hand corner of your window that looks like an S with a red slash through it.</para>
+	</listitem>
+</itemizedlist>
+
+
+<para>
+Click on <emphasis> Allow grinnell.edu. </emphasis>
+</para>
+
+</section> <!-- Iceweasel/Firefox -->
+
+<section id= "The GIMP and MediaScript"> 
+<title> The GIMP and MediaScript </title>
+
+<para>
+As you've probably heard by now, algorithms for creating and manipulating images are a central central theme of this course. The program that we are using to do image manipulation is called The GNU Image Manipulation Program, typically referred to as The GIMP. Of course, we also need a language in which to express those algorithms and an environment in which to write those algorithms. The Gimp comes with a language, called Script-Fu, for writing algorithms. Unfortunately, the environment for writing programs in the GIMP is, to put it politely, rough. So in response, we are going to use Wing, which is an environment for the language Python.
+Your first task in getting the GIMP running correctly is to add an icon to the task bar. (Almost as importantly, once you figure out how to add a GIMP icon, you will also be able to add other applications that you want to use.)
+</para>
+
+<para>
+<emphasis> Not-so-short Version </emphasis> 
+</para>
+
+<itemizedlist>
+	<listitem>
+	<para>Right click on the taskbar. A pop-up menu should appear.</para>
+	</listitem>
+	<listitem>
+	<para>Select <emphasis> Add to Panel </emphasis> ... from that menu. A dialog box should appear.</para>
+	</listitem>
+	<listitem>
+	<para>Select Custom Application Launcher, which should be the first item in the dialog box, and then click Add. Yet another dialog box should appear.</para>
+	</listitem>
+	<listitem>
+	<para>Leave the Type as Application.</para>
+	</listitem>
+	<listitem>
+	<para>Enter "GIMP + MediaScript" in the Name field.</para>
+	<listitem>
+	<para>Enter "/home/rebelsky/bin/gimp" in the Command field.</para>	</listitem>
+	<listitem>
+	<para>Enter "Media Program Development" in the Comment field.</para>
+	</listitem>
+	<listitem>
+	<para>Click Close to close the Add to Panel window.</para>
+	</listitem>
+	<listitem>
+	<para>You should now see the new icon in your taskbar. Try clicking it.</para>
+	</listitem>
+</itemizedlist>
+
+
+<para> 
+<emphasis> Detailed Version </emphasis>
+</para>
+
+<para>
+Most user interface systems provide a convenient way to access commonly-used applications. In Gnome, we often add such applications to the Task Bar. To add an application to the task bar, we need to tell Gnome about where to find that application and what icon to associate with the application. (We can tell it other things, too, but that's enough for now.)
+</para>
+
+<para>
+We will admit that we have not found an elegant way to automate the addition of an icon to the panel, so you'll have to do it by hand. You first tell the panel that you want to add something by right clicking in an empty area of the panel and then selecting <emphasis>Add to Panel</emphasis> .... (The ellipses tell you that you should expect to provide more information.) We're going to add an application launcher for a locally-developed application, so we must create a custom application launcher. Click on the <emphasis>Custom Application Launcher</emphasis> option and then click Add. The Create Launcher window appears.
+</para>
+
+<para>
+You will note that this window gives you a few things to set up for the launcher. Start by leaving the type as Application. The Name is what we use to refer to the application. In this case, we'll use “GIMP + MediaScript”. The launcher shows this name when you pause the cursor over the icon for the application.
+</para>
+
+<para>
+The Command is the most important thing to fill in. The command tells the launcher how, in particular, to start your program. Typically, we tell it where the program can be found and, in some cases, provide additional information on how to launch it. Since we're using a modified version of the GIMP, you should enter <emphasis> “/home/rebelsky/bin/gimp”</emphasis> (without the quotation marks).
+</para>
+
+<para>
+The Comment is additional information about the application, and also appears when you pause the cursor over the icon for the application. We'll use “Media Program Development” here, but you can choose other text that you find helpful.
+</para>
+
+<para>
+Finally, it is convenient to associate an icon with the application. If all goes well, you should see a picture of an animal (“Wilbur the GIMP”) eating a paintbrush. Leave that as the icon.
+You're almost done. You've chosen the name, command, and description. You now need to click OK to accept the new button, confirm that it appears, and then close the Add to panel dialog.
+</para>
+
+<para>
+Now it's time to start the GIMP. Click on the icon you've just created.
+</para>
+
+</section><!-- The GIMP and MediaScript -->
+
+<section id = "Working with Multiple Desktops">
+<title>Working with Multiple Desktops</title>
+
+<para>
+If you've kept all those windows open, you'll notice your screen is getting a bit crowded. Fortunately, a tool called the workspace switcher lets you uncrowd your windows by moving them among multiple desktops.
+</para>
+
+<para>
+<emphasis> Short Version </emphasis>
+</para>
+
+<itemizedlist>
+	<listitem>
+	<para> Find the workspace switcher icon in the workspace toolbar.</para>
+	</listitem>
+	<listitem>
+	<para>Click on the switcher to move to a different desktop.</para>
+	</listitem>
+	<para>Drag windows within the switcher to move them to other desktops.</para>
+	</itemlist>
+</itemizedlist>
+
+<para>
+<emphasis> Detailed Version </emphasis>
+</para>
+
+<para>
+In the toolbar at the bottom of the screen, you should see an icon that looks like a box containing four smaller boxes. (If you don't see it, ask for help.) This is the workspace switcher, a tool that lets you keep your application windows on several different desktops or workspaces.
+The upper-left-hand box represents the desktop you are working on right now. It contains a number of still smaller boxes of varying shapes and sizes, which represent the windows you have open. When you move or resize the a window on the desktop, you should see the window's representation in the switcher move as well. Give it a try by wiggling one of your windows around.
+</para>
+
+<para>
+
+Now, click in one of the other three boxes. You should see a new, blank desktop with no windows on it. Where did they go? If you look at the switcher, you'll see they are still in the desktop you started on. Switch back to that desktop.
+</para>
+
+<para>
+You can also use the switcher to move windows from one desktop to another. Find the switcher again and identify the box that corresponds to your Iceweasel/Firefox window. Click that box and drag it a little ways to the right, onto the next desktop. The window should disappear from the first desktop. If you click onto the desktop to the right, you should see it there.
+</para>
+
+<para>
+In this class, you'll usually need to work with multiple windows: The Wing window for your programs, various GIMP windows containing tools and images, and a web browser to read the laboratory exercises and reference materials. As you get settled in over the next few weeks, consider how you might use the switcher to help you organize your workspace efficiently. 
+</para>
+
+</section> <!-- Working with Multiple Desktops -->
+
+<section id = "Finishing Up and Logging Out"> <title> Finishing Up and Logging Out </title>
+
+<para>
+If you've successfully logged in, changed your password, started Iceweasel, selected your base page, created an icon for the GIMP, started the GIMP, and played with multiple desktops, you've completed the lab and you can finally stop.
+</para>
+
+<para>
+<emphasis> Short Version </emphasis>
+</para>
+<itemizedlist>
+	<listitem>
+	<para>    To logout, click on the "exit" icon near the lower right, and select Log Out from the confirmation dialog box.</para>
+	</listitem>
+	<listitem>
+	<para>     Do not turn off the monitor or computers. </para>
+	</listitem>
+	<listitem>
+</itemizedlist>
+
+<para>
+<emphsis> Detailed Version </emphsis>
+</para>
+
+<para>
+When you are done using a workstation, you must log out in order to allow other people to use it. To log out, move the pointer onto the green icon of a person exiting near the right of the front panel, click the left mouse button. A confirmation box will pop up, asking you to verify that you're ready to log out; move the pointer onto the words Log Out near the bottom-right of this box and click the left mouse button. The Gnome windowing system vanishes, and after a few seconds the login screen reappears; this confirms that you're really logged out.
+</para>
+
+<para>
+Please do not turn off the workstation when you are finished. The Linux workstations are designed to operate continuously; turning them off and on frequently actually shortens their life expectancy. We are working on finding ways to ensure that their power consumption is low when they are on but unused.
+</para>
+
+</section> <!-- Finishing Up and Logging Out -->
+
+</section> <!-- Lab -->
+
+
+
+	
+
+
+
+
+
+
+
+

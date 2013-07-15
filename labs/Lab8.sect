@@ -1,0 +1,524 @@
+<section id ="Transforming RGB Colors"> <title>Laboratory: Transforming RGB Colors
+</title>
+
+<section id ="Summary">
+<p>
+<emphasis>Summary:</emphasis> In this laboratory, you will experiment with a variety of techniques for transforming RGB colors and images built from RGB colors.
+</p>
+
+<para>
+<emphasis>Reference:</emphasis>
+</para>
+
+<para>
+rgb_lighter(rgb_color)
+</para>
+
+<para>
+MediaScript Color Procedure. Build a lighter version of the given color.
+</para>
+
+<para>
+rgb_darker(rgb_color)
+</para>
+
+<para>
+MediaScript Color Procedure. Build a darker version of the given color.
+</para>
+
+<para>
+rgb_redder(rgb_color)
+</para>
+
+<para>
+MediaScript Color Procedure Build a redder version of the given color.
+</para>
+
+<para>
+rgb-greener(rgb_color)
+</para>
+
+<para>
+MediaScript Color Procedure. Build a greener version of the given color.
+</para>
+
+<para>
+rgb_bluer(rgb_color)
+</para>
+
+<para>
+MediaScript Color Procedure. Build a bluer version of the given color.
+</para>
+
+<para>
+rgb_rotate(rgb_color)
+</para>
+
+<para>
+MediaScript Color Procedure. Rotate the three components of the given color, setting the red component to the value of green, green to the value of blue, and blue to the value of red.
+</para>
+
+<para>
+rgb_phaseshift(rgb_color)
+</para>
+
+
+<para>
+MediaScript Color Procedure.“Phase shift” the color by adding 128 to components less than 128 and subtracting 128 from components greater than 128.
+</para>
+
+
+<para>
+rgb_complement (rgb_color)
+
+</para>
+
+<para>
+MediaScript Color Procedure.“Phase shift” the color by adding 128 to components less than 128 and subtracting 128 from components greater than 128.
+</para>
+
+<para>
+rgb_complement (rgb_color)
+</para>
+
+<para>
+MediaScript Color Procedure. Compute the psuedo-complement of the given color.
+image_transform_pixel (image, column, row, func)
+</para>
+
+<para>
+MediaScript GIMP Procedure. Modify the pixel at (col,row) in image by applying func to its old color and setting that pixel to the resulting color.
+</para>
+
+</section> <!-- Summary -->
+
+<section id ="Preparation"> <title> Preparation</title>
+
+<para>
+In this laboratory, you will be creating a few images and manipulating others. We will also be working with some colors.
+</para>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Create a new 4x3 image, call it canvas, show it, and zoom in to 16x or greater resolution. (Note that a shortcut for zooming in is to expand the window and then use View->Zoom->Fit Image in Window.)</para>
+</listitem>
+<listtime>
+<para>
+You may have created definitions for three favorite colors, fave1, fave2, and fave3 in a previous lab. Check your library to see if they are there. If not, add some definitions. For example:
+</para>
+<listitem>
+</orderedlist>
+
+<para>
+fave1 = color_name_to_rgb("black")
+</para>
+
+<para>
+fave2 = color_name_to_rgb("red")
+</para>
+
+<para>
+fave3 = rgb_new(1, 111, 111)
+</para>
+
+</section> <!-- Preparation -->
+
+<section id ="Exercises"> <title>Exercises</title>
+
+<section id ="Exercise 1: Lighter and Darker"> <title>Exercise 1: Lighter and Darker</title>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Using <emphasis>rgb_to_rgb_list(name)</emphasis> or <emphasis>rgb_to_rgb_string(name)</emphasis>, remind yourself of the three components of fave1 </para>
+</listitem>
+
+<listitem>
+<para> Determine what happens to the components when you apply rgb_darker to fave1. You'll need to apply rgb_darker and then find out the components of the new color. </para>
+</listitem>
+
+<listitem>
+<para>Determine what happens when you apply rgb_lighter to fave1.
+ </para>
+</listitem>
+
+<listitem>
+<para> Using image_set_pixel, draw three pixels side-by-side on canvas (say, in positions (0,1), (1,1), and (2,1)). The first should be the lighter version of fave1. The second should be fave1. The third should be the darker version of fave1. Do you see a difference?
+</para>
+</listitem>
+
+<listitem>
+<para>What do you expect to happen to the red, green, and blue components if you apply rgb-lighter three times to the color 127/20/20, as in the following? </para> 
+<para>
+newcolor = rgb_lighter(rgb_lighter(rgb_lighter(rgb_new (127, 20, 20))))
+</para>
+</listitem>
+
+<listitem>
+<para> Check your answer experimentally.</para>
+</listitem>
+
+<listitem>
+<para>What do you expect to happen to the red, green, and blue components if you apply rgb-darker three times to the color 127/20/20, as in the following?
+ </para>
+<para>
+newcolor2 = rgb_darker(rgb_darker(rgb_darker(rgb_new(127, 20, 20))))
+</para>
+</listitem>
+
+<listitem>
+<para>Check your answer experimentally. </para>
+</listitem>
+</orderedlist>
+
+</section> <!-- Excercise 1 -->
+
+<section id ="Exercise 2: Other Transformations
+"><title>Exercise 2: Other Transformations
+</title>
+
+<para>
+As you may recall from the reading, there are also color transformations that make more significant changes to colors. For example, rgb_phaseshift shifts each component by 128 (adding to small components and subtracting from large components). In contrast, rgb_complement computes the complement of a color.
+</para>
+
+<para>
+Suppose we've defined the following colors:
+</para>
+
+<para>
+c0 = rgb_new(64, 128, 196)
+</para>
+
+<para>
+c1 = rgb_new(32, 96, 255)
+</para>
+
+<para>
+c2 = rgb_new(240, 0, 127)
+</para>
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para> What do you expect the complements of c0, c1, and c2 to be?
+ </para>
+</listitem>
+
+<listitem>
+<para> Check your answer experimentally.
+ </para>
+</listitem>
+
+<listitem>
+<para>What do you expect the phase shifts of c0, c1, and c2 to be?
+  </para>
+</listitem>
+
+<listitem>
+<para> Check your answer experimentally.
+ </para>
+</listitem>
+</orderedlist>
+
+</section> <!-- Excercise 2 -->
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para> Set pixels (0,0) and (1,1) of canvas to fave1.</para>
+</listitem>
+
+<listitem>
+<para> Make the top-left pixel darker using the more verbose instruction from the reading.
+ </para>
+<para>
+image_set_pixel (canvas, 0, 0, rgb_darker(image_get_pixel(canvas, 0,0)))
+</para>
+</listitem>
+
+<listitem>
+<para> Make the pixel at (1,1) darker using the the more concise image-transform-pixel! procedure. </para>
+<para>
+image_transform_pixel (canvas, 1 ,1, rgb-darker) 
+</para>
+</itemlist>
+
+</listitem>
+<para> Do you see any advantages of using the longer instruction?</para>
+<lisitem>
+
+</orderedlist>
+
+</section> <!-- Exercise 3 -->
+
+<section id ="Exercise 4: Pause for Breath"> <title> Exercise 4: Pause for Breath</title>
+
+<para>
+You're halfway through the lab. Take a deep breath.
+</para>
+
+</section><!-- Exercise 4: Pause for Breath -->
+
+<section id ="Exercise 5: Multiple Transformations"><title>Exercise 5: Multiple Transformations
+</title>
+
+<para>
+We have just a few basic transformations. However, we can get more transformations by combining the basic transformations. For example, we get a different color when we complement and darken a color than when we complement or darken the color alone.
+</para>
+
+<orderedlist numeration="alphalower">
+<listitem>
+<para>Does the order in which we apply transformations matter? In particular, do you get the same or different color when you complement and then darken a color as compared to when you darken and then complement the color? In code, what is the relationship between newcolor1 and newcolor2?</para>
+<para>
+newcolor = rgb_darker(rgb_complement(fave1))
+</para>
+<para>
+newcolor2 = rgb_complement(rgb_darker(fave1))
+</para>
+</listitem>
+
+<listitem>
+<para> Check your answer experimentally. </para>
+</listitem>
+
+<listitem>
+<para> What do you expect to have happen if you complement a color twice, as in this example?</para>
+<para>
+newcolor3= rgb_complement(rgb_complement(fave2))
+</para>
+</listitem>
+
+<listitem>
+<para> Check your answer experimentally.</para>
+</listitem>
+
+<listitem>
+<para>At first glance, lightening and darkening an image seem to be inverse operations. Are there ever times in which the sequence of rgb_lighter and then rgb_darker does not give you back the same color?</para>
+<para>
+newcolor4 = rgb_new(__,___,__)
+</para>
+<para>
+newcolor5  = rgb_darker(rgb_lighter(newcolor4))
+</para>
+</listitem>
+
+<listitem>
+<para>Check your answer experimentally. In doing so, try colors near the extremes, such as black, white, yellow, 10/255/127, and such. </para>
+</listitem>
+
+</orderedlist>
+
+</section><!-- Exercise 5: Multiple Transformations -->
+
+<section id = "Exercise 6: Transforming Larger Sections"><title>Exercise 6: Transforming Larger Sections</title>
+
+<para>
+
+In the <ulink url="http://www.cs.grinnell.edu/~rebelsky/Courses/CS151/2010S/readings/transforming-rgb-reading.html"> corresponding reading </ulink>, there is a set of sample code that is intended to transform canvas by complementing every pixel.
+</para>
+
+
+<para>
+image_transform_pixel (canvas, 0, 0, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 0, 1, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 0, 2, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 0, 3, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 1, 0, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 1, 1, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 1, 2, rgb-complement)
+</para>
+
+
+<para>
+image_transform_pixel (canvas, 1, 3, rgb-complement)
+</para>
+
+
+<para>
+image_transform_pixel (canvas, 2, 0, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 2, 1, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 2, 2, rgb-complement)
+</para>
+
+<para>
+image_transform_pixel (canvas, 2, 3, rgb-complement)
+</para>
+
+
+<orderedlist numeration="loweralpha">
+<listitem>
+<para> There is a subtle error in the code. Identify the error and fix it. (If you can't figure out the error, try running the code to see what error messages you get.)
+ </para>
+</listitem>
+
+<listitem>
+<para> Update canvas so that it has a variety of colors. Here is one set of simple changes, but you can do what you want.</para>
+<para> image_set_pixel(canvas, 0, 0,(rgb_new(0,0,0))) </para>
+<para> image_set_pixel(canvas, 1, 0, (rgb_new(255,0,0))) </para>
+<para> image_set_pixel(canvas, 2, 0, (rgb_new(0,255,0))) </para>
+<para> image_set_pixel(canvas, 0, 1, (rgb_new(255,255,255))) </para>
+<para> image_set_pixel(canvas, 1, 1, (rgb_new(255,0,255))) </para>
+<para> image_set_pixel(canvas, 2, 1, (rgb_new(255,255,0))) </para>
+<para> image_set_pixel(canvas, 3, 1, (rgb_new(0,255,255))) </para>
+<para> image_set_pixel(canvas, 0, 2, (rgb_new(63,127,195))) </para>
+<para> image_set_pixel(canvas, 1, 2, (rgb_new(127,195,63))) </para>
+<para> image_set_pixel(canvas, 2, 2, (rgb_new(195,63,127))) </para>
+</listitem>
+
+<listitem>
+<para> Verify that the repaired instructions do, in fact, complement all of the pixels. </para>
+</listitem>
+
+<listitem>
+<para> What do you expect to have happen if you run this code twice?</para>
+</listitem>
+
+<listitem>
+<para> Check your answer to the previous question experimentally.</para>
+</listitem>
+
+</orderedlist>
+
+</section>  <!-- Exercise 6: Transforming Larger Sections -->
+
+<section id = "Exercise 7: Writing Your Own Transformations"> <title>  Exercise 7: Writing Your Own Transformations</title>
+
+<para>
+As you may recall, we defined two new transformations in the reading.
+</para>
+
+<programlisting>
+def greener(color):
+    return rgb_greener(rgb_greener(rgb_darker(rgb_darker(color))))
+
+def bound(val, lower, upper):
+    return min(max(val, lower), upper)
+
+def rgb_bound(rgb):
+    return rgb_new(bound(rgb_red(rgb), 64, 192), bound(rgb_green(rgb), 63, 192), bound(rgb_blue(rgb), 64, 192))
+</programlisting>
+
+
+
+<orderedlist numeration="alphalower">
+<listitem>
+<para> Verify that each works as advertised. </para>
+</listitem>
+
+<listitem>
+<para> Write a procedure, redder(color) that makes color redder using a technique of your choice. (It should, however, do more than just call rgb-redder.)
+ </para>
+</listitem>
+
+<listitem>
+<para> Test your procedure. </para>
+</listitem>
+
+</orderedlist>
+</sectiion> <!-- Exercise 7: Writing Your Own Transformations -->
+
+</section> <!-- Exercises --> 
+<section id  = "For Those With Extra Time">  <title>For Those With Extra Time
+ </title>
+
+<para>
+If you have extra time, try either an Extra problem (which emphasizes Scheme issues) on an Exploration (which emphasizes thinking about colors and images). You should be able to do these problems in any order. Choose the one that seems most interesting to you.
+</para>
+
+
+<section id = "Extra 1: Phase Shifting vs. Complementing"><title> Extra 1: Phase Shifting vs. Complementing</title>
+
+<para>
+At first glance, some find that rgb_phaseshift is a lot like rgb_complement. After all, each changes a color by shifting the components, and adding or subtracting 128 may feel like an easier way to get something that sums to 255. However, as we've suggested in the reading, the two operations are quite different.
+</para>
+
+<orderedlist numeration="alphalower">
+<listitem>
+<para>  Find two colors whose pseudo-complements are fairly close to their phase-shifted versions. You may find the following code useful as you visually compare the different colors. </para>
+<para> color1 = rgb_new(__,__,__)</para>
+<para> color2 = rgb_new(__,__,__) </para>
+<para> ps1 = rgb_phaseshift(color1) </para>
+<para> ps2 = rgb_phaseshift(color2) </para>
+<para> comp1 = rgb_complement(color1) </para>
+<para> comp2 = rgb_complement(color2) </para>
+<para> image_set_pixel(canvas, 0, 0, color1) </para>
+<para> image_set_pixel(canvas, 1, 0, ps1) </para>
+<para> image_set_pixel(canvas, 2, 0, comp1) </para>
+<para> image_set_pixel(canvas, 0, 2, color2) </para>
+<para> image_set_pixel(canvas, 1, 2, ps2) </para>
+<para> image_set_pixel(canvas, 2, 2, comp2) </para>
+</listitem>
+
+<listitem>
+<para> Find two colors whose phase-shifted versions are much different than their pseudo-complements. </para>
+</listitem>
+
+<listitem>
+<para> Do you expect there to be more colors like those in a, or more colors like those in b? (That is, is it more likely that the pseudo-complement of a color is close to the phase-shifted color, or that they are different?) Explain your answer. </para>
+</listitem>
+
+</orderedlist>
+
+
+</section> <!-- For Those With Extra Time -->
+
+<section id "Explorations"> <title> Explorations </title>
+
+<section id  = "Exploration 1: Arithmetical Transformations">
+<title> Exploration 1: Arithmetical Transformations </title>
+
+<para>
+As you have undoubtedly noticed, RGB colors are represented as integers. That means that we can transform colors with arithmetic operations as well as with component based operations. What do you think the following operations will do to the sample color? Try some of them to find out. Try using different sample colors (black, grey, white, primaries, favorite colors, whatever). (Don't worry if you can't figure it out and the results don't necessarily make sense; even those who designed the representation can't easily make sense of it.)
+</para>
+
+
+<para>sample = fave1</para>
+<para> rgb_to_rgb_string(sample)</para>
+<para>rgb_to_rgb_string(2 * sample)</para>
+<para>rgb_to_rgb_string(3 * sample)</para>
+<para>rgb_to_rgb_string(256 * sample)</para>
+<para>rgb_to_rgb_string(sample / 2)</para>
+<para>rgb_to_rgb_string(sample / 3)</para>
+<para>rgb_to_rgb_string(sample / 256)</para>
+<para>rgb_to_rgb_string(sample + color_name_to_rgb("red"))</para>
+<para>rgb_to_rgb_string(sample + color_name_to_rgb("green"))</para>
+<para>rgb_to_rgb_string(sample + color_name_to_rgb("blue"))</para>
+<para>rgb_to_rgb_string(sample + color_name_to_rgb("red") / 2)</para>
+<para>rgb_to_rgb_string(sample - color_name_to_rgb("red"))</para>
+<para>rgb_to_rgb_string(sample - color_name_to_rgb("green"))</para>
+<para>rgb_to_rgb_string(sample + color_name_to_rgb("blue"))</para>
+
+</section> <!-- Exploration 1: Arithmetical Transformations -->
+
+<section id = "Exploration 2: Your Own Transformations"><title> Exploration 2: Your Own Transformations </title>
+
+<para>
+Try developing your own interesting transformation procedures using some of the numerical operations you know about.
+</para>
+
+
+
+
+
+
