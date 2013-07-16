@@ -150,9 +150,9 @@ def drawing_compose (list_of_drawings):
 #Preconditions: none 
 #Postconditions: when rendered, ellipse will be drawn as a filled ellipse,
 #                with the specified left margin, top margin. width and height 
-def drawing_ellipse(left, right, width, height):
+def drawing_ellipse(left, top, width, height):
     return drawing_shape("ellipse", rgb_new(0, 0, 0), "", left,
-            right, width, height)
+            top, width, height)
 
 
 #Procedure: drawing_group
@@ -692,10 +692,7 @@ def l_s(biproc, left):
         return biproc(left, right)
     return new_proc
 
-def foo(y, x):
-    lambda x,y: drawing_hscale(x, y)
 
-    
 
 #Procedure: r_s (right section)
 #Parameters: biproc, a procedure that takes two parameters
@@ -865,9 +862,9 @@ def image_clear_selection(image):
 #Preconditions: image is valid
 #               left, top, width, height describe an ellipse
 #Postconditions: an ellipse is selected with given dimensions
-def image_select_ellipse(image, operation, top, left, width, height):
-    if (image_validate_selection(image, operation, top,
-                                 left, width, height)):
+def image_select_ellipse(image, operation, left, top, width, height):
+    if (image_validate_selection(image, operation, left,
+                                 top, width, height)):
         gimp.gimp_image_select_ellipse (image, selection_op(operation),
                                         left, top, width, height)
 
@@ -899,9 +896,9 @@ def image_select_none(image):
 #Preconditions: image is valid
 #               left, top, width, height describe a rectangle
 #Postconditions: a rectangle is selected with given dimensions        
-def image_select_rectangle(image, operation, top, left, width, height):
-    if (image_validate_selection(image, operation, top,
-                                    left, width, height)):
+def image_select_rectangle(image, operation, left, top, width, height):
+    if (image_validate_selection(image, operation, left,
+                                    top, width, height)):
         gimp.gimp_image_select_rectangle(image, selection_op(operation),
                                         left, top, width, height)
         
