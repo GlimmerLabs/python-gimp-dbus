@@ -1,0 +1,237 @@
+<section id ="List of Drawings Lab"><title>Laboratory: Making and Manipulating Lists of Drawings</title>
+
+<section id ="Summary">
+<para>
+<emphasis>Summary:</emphasis> In this laboratory, you will experiment with ways to build and use lists of drawings.
+</para>
+</section> <!-- Summary -->
+
+<section id ="Preparation"><title>Preparation: Give up, it’s probably too hard</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>import <code>code_lab_15.py</code> which contains some useful code for this lab.</para>
+</listitem>
+<listitem>
+<para>Make a list (mentally, on paper, or on the computer) of the procedures and values initially included in the file.</para>
+</listitem>
+<listitem>
+<para>In your own words, explain the difference between check-drawing and check-drawings.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Preparation -->
+
+<section id ="Exercises"><title>Exercises</title>
+
+<section id ="Exercise 1"><title>Exercise 1: Some Simple Drawings</title>
+<para>Create each of the following drawings.</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>sample-circle, a circle of diameter 5, centered at (0,50).</para>
+</listitem>
+<listitem>
+<para>sample-square, a square of edge-length 4, centered at (0,25).</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 1 -->
+
+<section id ="Exercise 2"><title>Exercise 2: Making Lists</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>The reading claims that we can make a list of drawings with [drawing, drawing, drawing...etc]. Make and render a list of the two drawings you created in the previous exercise.</para>
+</listitem>
+<listitem>
+<para>The reading claims that we can make a list of identical drawings with: <code>>>>["hello"] * 5</code> 
+Verify this claim.</para>
+</listitem>
+<listitem>
+<para>Create a value, <code>ten_circles</code>, that consists of 10 copies of <code>sample_circle</code>.</para>
+</listitem>
+<listitem>
+<para>Have the Python interpreter print out that value to see whether it seems to contain the expected ten copies.</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen when we try to render <code>ten_circles</code> with <code>check_drawings</code>?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.
+<code>check_drawings(ten_circles)</code></para>
+</listitem>
+</orderedlist>
+<para>You may find it useful to look at <link linkend="Note 1">the notes on this exercise</link>.</para>
+</section> <!-- Exercise 2 -->
+
+<section id ="Exercise 3"><title>Exercise 3: Shifting Drawings</title>
+<para>As you may recall, <code>map(drawing_hshift, list-of-drawings, list-of-offsets)</code> builds a new list of drawings by horizontally shifting each element of <emphasis>list-of-drawings</emphasis> by the corresponding elements of <emphasis>list-of-offsets</emphasis>.</para>
+<para>Consider the following sequence of instructions:</para> 
+<para>
+<programlisting>
+list02 = [0, 10, 20, 45, 56, 23, 65, 2, 56, 3]
+list01 = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+
+ten_circles_01 = map(drawing_hshift, ten_circles, list01)
+ten_circles_02 = map(drawing_hshift, ten_circles, list02)
+ten_circles_03 = map(drawing_vshift, ten_circles, list01)
+ten_circles_04 = map(drawing_vshift, ten_circles, list02)
+ten_circles_05 = map(drawing_vshift, ten_circles_02, list01)
+ten_circles_06 = map(drawing_hshift, ten_circles_01, list01)
+</programlisting>
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Where do you expect the circles in each list to fall?</para>
+</listitem>
+<listitem>
+<para>Check your answers experimentally.</para>
+<para>
+<programlisting>
+check_drawings(ten_circles_01)
+check_drawings(ten_circles_02)
+check_drawings(ten_circles_03)
+check_drawings(ten_circles_04)
+check_drawings(ten_circles_05)
+check_drawings(ten_circles_06)
+</programlisting>
+</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 3 -->
+
+<section id ="Exercise 4"><title>Exercise 4: Systematically Shifting Lists of Drawings</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>As you may recall, range(n) makes a list of the numbers from 0 to n-1. Predict what range(10) is and check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect the result of the following to be?</para>
+<para>
+<programlisting>
+>>> check_drawings(map(drawing_hshift, 
+                       [sample_square] * 50,
+                       range(50)))
+</programlisting>
+</para>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect the result of the following to be?</para>
+<para>
+<programlisting>
+>>> check_drawings(map(drawing_vshift,
+                   map(drawing_hshift,
+                       [sample_circle] * 50,
+                       range(50)), range(50)))
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>What do you expect the result of the following to be?</para>
+<para>
+<programlisting>
+e = range(50)
+e.reverse()
+check_drawings(map(drawing_hshift,
+                   map(drawing_vshift,
+                       [sample_circle] * 50, e),
+                   range(50)))
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>What do you expect the result of the following to be? (You need not specify all the members of each list; just summarize.)</para>
+<para>
+<programlisting>
+map(mod5, range(50))
+map(times5, range(50))
+map(times5, map(mod7, range(50)))
+map(mod7, map(times5, range(50)))
+</programlisting>
+</para>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to get for each of the following?</para>
+<para>
+<programlisting>
+check_drawings(map(drawing_hshift,
+                   map(drawing_vshift,
+                       [sample_square] * 50,
+                        map(mod7, range(50))),
+                   map(times5, range(50))))
+</programlisting>
+</para>
+<para>
+<programlisting>
+check_drawings(map(drawing_hshift,
+                   map(drawing_vshift,
+                       [sample_square] * 50,
+                       map(times5, map(mod7, range(50)))),
+                   map(times5, range(50))))
+</programlisting>
+</para>
+<para>Check your answer experimentally.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 4 -->
+
+<section id ="Exercise 5"><title>Exercise 5: Systematic Shifting, Continued</title>
+<para>In the final stages of the previous exercise, we got a series of diagonals built by replicating an image. But what if we wanted something more “v-shaped”?</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Let's start with a simple v. Using an appropriate combination of range, reverse, append, and map, create the list (0 1 2 3 ... 24 25 24 23 ... 3 2 1) and call it vee.</para>
+<para><emphasis>Hint:</emphasis> Try to think about how you systematically build the two halves of that list (the numbers in increasing order and then the numbers in decreasing order).</para>
+</listitem>
+<listitem>
+<para>Using the list vee, as well as range(50), build a “V-shaped” sequence of circles called vee-circles.</para>
+</listitem>
+<listitem>
+<para>Using the list vee, as well as range(50), build a “>-shaped” sequence of squares vee-squares.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 5 -->
+
+<section id ="Exercise 6"><title>Exercise 6: Recoloring Drawings</title>
+<para>
+Take any of your lists of fifty shapes from the previous exercises and modify them so that the first 10 shapes are colored blue, the next 15 are colored red, and the last 25 are colored green.
+It is likely that you'll want to take two steps to this: First, build a list of 10 copies of blue, 15 copies of red, and 25 copies of green. (You can use * and list.append.) Second, use map and drawing_recolor to recolor the individual drawings.
+</para>
+</section> <!-- Exercise 6 -->
+
+<section id ="Exercise 7"><title>Exercise 7: Systematically Scaling Lists of Drawings</title>
+<para>Here is a rendering of a simple diagonal of unit squares.</para>
+<para>
+<programlisting>
+check_drawings(map(drawing_hshift,
+                   map(drawing_vshift,
+                       [drawing_unit_square()] * 50,
+                       map(times5, range(50))),
+                  map(times5, range(50))))
+</programlisting>
+</para>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Update that sequence of drawings so that the squares range systematically in edge length from 1 to 5. (That is the lengths will be 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ....) You'll need to build the list of lengths and then use map to change the size of the squares.</para>
+</listitem>
+<listitem>
+<para>Update the first sequence of drawings so that the width of the rectangles ranges systematically from 1 to 5, but the height stays 1.</para>
+</listitem>
+<listitem>
+<para>Update the first recent sequence of drawings so that the width of the rectangles ranges systematically from 1 to 5 and the height of the rectangles ranges systematically from 1 to 7.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 7 -->
+
+</section> <!-- Exercises -->
+
+<section id ="Explorations"><title>Explorations</title>
+<para>You have now learned how to systematically shift, scale, and recolor copies of a single drawing. Put these different techniques together to create the most interesting drawing you can.</para>
+</section> <!-- Explorations -->
+
+<section id ="Notes"><title>Notes on the Exercises</title>
+
+<section id ="Note 1"><title>Notes on Exercise 2</title>
+<para>For part f, since all of the drawings are in the same place, rendering the list of drawings will produce the same result as rendering just one of the drawings.</para>
+</section> <!-- Note 1 -->
+
+</section> <!-- Notes -->
+
+</section> <!-- List of Drawings Lab -->
