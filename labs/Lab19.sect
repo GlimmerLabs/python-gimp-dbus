@@ -1,0 +1,291 @@
+<section id ="Turtle Lab"><title>Laboratory: Turtle Graphics</title>
+
+<section id ="Summary">
+<para>
+<emphasis>Summary: In this laboratory, you will experiment with turtle graphics. In particular, you will both read and write code for drawing with turtle graphics.</emphasis>
+</para>
+</section> <!-- Summary -->
+
+<section id ="Preparation"><title>Preparation</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Start the GIMP and  Python Console.</para>
+</listitem>
+<listitem>
+<para>Review the list of turtle graphics procedures and other procedures listed at the end of this lab. There is at least one new procedure listed there. See if you can figure it which it is.</para>
+</listitem>
+<listitem>
+<para>In the definitions pane, create a new 300x200 image called world and show that image.
+<code>world = image_show(image_new(300, 200))</code></para>
+</listitem>
+<listitem>
+<para>In the definitions pane, create three turtles called tarski, tukey, and turing . All three turtles should be placed on world. Here's one of the three definitions.
+<code>
+tarski = Turtle()
+tarski._init_(world)
+</code>
+</para>
+</listitem>
+</orderedlist>
+<para><emphasis>Note:</emphasis> Your definitions for these turtles should come after your definition for world.</para>
+</section> <!-- Preparation -->
+
+<section id ="Exercises"><title>Exercises</title>
+
+<section id ="Exercise 1"><title>Exercise 1: Preliminary Explorations</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Teleport turing to the center of your image and determine experimentally what direction it faces.</para>
+</listitem>
+<listitem>
+<para>Determine experimentally where tukey starts. (All turtles face the same direction, so you can use that information in figuring out the starting point.) Hint: You'll probably want to use a larger brush so that it's easier to see where it is.</para>
+</listitem>
+<listitem>
+<para>Using turing, draw a red rectangular box 10 pixels in from the outside edge of world. (Just draw the lines at the border of the box; don't try to fill in the box.)</para>
+</listitem>
+<listitem>
+<para>Without using <code>turtle.teleport</code>, write a series of instructions to move tarski to the center of world. The turtle should “leave no trace”. Make sure to put tarski’s pen back down when you reach the center.</para>
+</listitem>
+</orderedlist>
+<para>You may wish to compare your answer to the one in <link linkend="Note 1">the notes on this exercise</link>.</para>
+</section> <!-- Exercise 1 -->
+
+<section id ="Exercise 2"><title>Exercise 2: Centering Turtles</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Add the following procedure to your definitions pane:
+<programlisting>
+# Procedure:
+#   turtle-center!
+# Parameters:
+#   turtle, a turtle
+# Purpose:
+#   Places turtle at the center of its world, facing right.
+# Produces:
+#   turtle, the same turtle
+def turtle_center(turtle):
+    turtle.teleport(image_width(turtle.world) / 2, image_height(turtle.world) / 2)
+    turtle.face(0)
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>Determine experimentally whether that procedure successfully centers tarski (or another turtle of your choice) in canvas.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 2 -->
+
+<section id ="Exercise 3"><title>Exercise 3: A Simple Drawing</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Copy and paste this procedure into the definitions pane.
+<programlisting>
+def figure02(turtle):
+    turtle.forward(50)
+    turtle.turn(120)
+    turtle.forward(50)
+    turtle.turn(120)
+    turtle.forward(50)
+    turtle.turn(120)
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>What do you think the procedure does?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.
+<programlisting>
+turtle_center(tarski)
+figure02(tarski)
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen if run figure02 again?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally. Remember: you can hit the up-arrow key and then the Enter key to repeat the instruction.</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen if you run figure02 a third time?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to have happen if you run figure02 a fourth time?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>In the interactions pane, set tarski’s brush to "Circle Fuzzy (15)" and the color to yellow.</para>
+</listitem>
+<listitem>
+<para>Run figure02 three more times, using a loop.
+<programlisting>
+def repeatfig02(turtle):
+    for x in xrange(3):
+        figure02(turtle)
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>In the interactions pane, set tarski’s brush to "Circle Fuzzy (11)" and the color to black.</para>
+</listitem>
+<listitem>
+<para>Run figure02 three more times.</para>
+</listitem>
+<listitem>
+<para>Using similar techniques, make this drawing a bit more interesting.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 3 -->
+
+<section id ="Exercise 4"><title>Exercise 4: Varying the Drawing</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Add the following line to the end of the code for figure02:
+<code>turtle.turn(120)</code></para>
+</listitem>
+<listitem>
+<para>Click Run to create a new image and to load the new definition of figure02.</para>
+</listitem>
+<listitem>
+<para>How do you expect the new version of figure02 to differ from the prior version?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally. (Make sure to run figure02 a few times.)
+<code>
+turtle_center(tarski)
+repeatfig02(tarski)
+</code>
+</para>
+</listitem>
+<listitem>
+<para>What do you expect to happen if you add the following line to the end of the new code for figure02? <code> turtle.turn(30)</code></para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally. That is, click Run, put tarski at the center of the image, and then run figure02 a few times.</para>
+</listitem>
+<listitem>
+<para>What do you expect to happen if you add the following line to the end of the new code for figure02?
+<code>turtle.forward(10)</code></para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>How might you use the techniques we just explored to generate more complex images? Be prepared to share your answer with the class.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 4 -->
+
+<section id ="Exercise 5"><title>Exercise 5: More Figures</title>
+<para>
+Consider the following procedure:
+<programlisting>
+def figure04(turtle, angle):
+    turtle.forward(50)
+    turtle.turn(angle)
+    turtle.forward(50)
+    turtle.turn(angle)
+    turtle.forward(50)
+    turtle.turn(angle)
+    turtle.forward(50)
+    turtle.turn(angle)
+    turtle.forward(50)
+</programlisting>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Suppose we used 72 for angle. What figure do you expect one call to figure04 to produce?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to happen if we do a few more calls to figure04?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>Suppose used 144, rather than 72, for the angle. What effect would this have on the drawing?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>Try a few other angles and see what kinds of images you can produce by repeatedly evaluating the expression. For example, you might try 45, 60, 75, and 150.</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exercise 5 -->
+
+</section> <!-- Exercises -->
+
+<section id ="Extras"><title>For Those With Extra Time</title>
+
+<section id ="Extra 1"><title>Extra 1: Spirals</title>
+<para>Write a series of instructions to have a turtle draw a spiral. (It's fine if the spiral is jagged.)</para>
+</section> <!-- Extra 1 -->
+
+<section id ="Extra 2"><title>Extra 2: Six-Pointed Stars</title>
+<para>One technique for making six-pointed stars is to overlay two equilateral triangles. Using the instructions you've already seen for making equilateral triangles, write a series of instructions to make a six-pointed star.</para>
+</section> <!-- Extra 2 -->
+
+</section> <!-- Extras -->
+
+<section id ="Explorations"><title>Explorations</title>
+<para>In exercise 4, you learned that a few extra changes at the end of a drawing can lead to an attractive sequence of drawings. In exercise 5, you learned how to make a pentagon and a five-sided star. Make a few changes to the code for one of those two figures (or some other variant), similar to those we made in exercise 3, to generate an image you find visually appealing.</para>
+</section> <!-- Explorations -->
+
+<section id ="Notes"><title>Notes on the Exercises</title>
+
+<section id ="Note 1"><title>Notes on Exercise 1: Preliminary Explorations</title>
+<para>
+There are a number of ways to get tukey to the center of the image, given that we know that tukey is at (0,0) and facing right. Here is a fairly straightforward one. We move tukey forward half of the width of the image, turn right, move tommy forward half of the height of the image, and then turn back to the original heading.
+<programlisting>
+tukey.pen_up()
+tukey.forward(image_width(tukey.get_world())/ 2)
+tukey.turn(90)
+tukey.forward(image_height(tukey.get_world())/ 2)
+tukey.turn(-90)
+tukey.pen_down()
+</programlisting>
+<link linkend="Exercise 1">Return to the exercise.</link>
+</para>
+</section> <!-- Note 1 -->
+
+</section> <!-- Notes -->
+
+<section id ="Reference"><title>Reference</title>
+<code>
+turtle.Turtle()
+turtle._init_(world)
+</code>
+<para>MediaScript Turtle Constructor. Build a new turtle that draws on image.</para>
+<code>turtle.clone(turtle)</code>
+<para>MediaScript Turtle Constructor. Make a clone of turtle (same position, direction, color, brush, etc).</para>
+<code>turtle.forward(distance)</code>
+<para>MediaScript Turtle Procedure. Moves turtle forward by the specified distance.</para>
+<code>turtle.teleport(x, y)</code>
+<para>MediaScript Turtle Procedure. Move turtle to (col,row). Do not draw along the way.</para>
+<code>turtle.face(angle)</code>
+<para>MediaScript Turtle Procedure. Make turtle face the direction specified by angle (clockwise from right).</para>
+<code>turtle.turn(angle)</code>
+<para>MediaScheme Turtle Procedure. Rotate turtle clockwise by angle degrees.</para>
+<code>turtle.pen_down()</code>
+<para>MediaScriptTurtle Procedure. Put turtle's brush down. When the turtle moves forward, it draws with the brush.</para>
+<code>turtle.pen_up()</code>
+<para>MediaScript Turtle Procedure. Lifts turtle's brush. When turtle moves forward, it will not draw.</para>
+<code>turtle.set_brush(“brush”)</code>
+<para>MediaScript Turtle Procedure. Set the brush that turtle draws with.</para>
+<code>turtle.set_color(rgb_color)</code>
+<para>MediaScript Turtle Procedure. Set the color in which turtle draws.</para>
+<code>turtle.world()</code>
+<para>MediaScheme Turtle Procedure. Determine the world on which turtle resides.</para>
+</section> <!-- Reference -->
+
+</section> <!-- Turtle Lab -->
