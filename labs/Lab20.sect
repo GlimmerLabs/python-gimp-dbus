@@ -1,0 +1,270 @@
+<section id ="Iteration Lab"><title>Laboratory: Iteration</title>
+
+<section id ="Summary">
+<para><emphasis>Summary:</emphasis> In this laboratory, you will experiment with loops, which we use for iterating over lists.</para>
+</section> <!-- Summary -->
+
+<section id ="Preparation"><title>Preparation</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Make a copy of <link linkend="Reference">these definitions</link>, which contains some useful code for this lab.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Preparation -->
+
+<section id ="Exercises"><title>Exercises</title>
+
+<section id ="Exercise 1"><title>Exercise 1: Experimenting with the Basic Actions</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>The reading claims that by applying the <code>turtle_action_01</code> procedure to the numbers from 1 to n, we can get one form of spiral. Check this claim using something like the following code:
+<programlisting>
+tukey = Turtle()
+tukey._init_(world1)
+steps = 50
+x = 0
+while x <= steps:
+  turtle_action_01(tukey, steps)
+  steps -= 1
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>The reading claims that by applying the <code>turtle_action_02</code> procedure to the numbers from 1 to n, we can get another form of spiral. Check this claim using similar code to that above.</para>
+</listitem>
+<listitem>
+<para>Does it matter whether we start with 1 or 0 for the list of distances or angle? Check your answer experimentally.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 1 -->
+
+<section id ="Exercise 2"><title>Exercise 2: Improving Our Spirals</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para><code>turtle_action_01</code> uses an angle of 23 degrees. What do you expect to have happen if you use a smaller or larger angle?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally, using a variety of values, some smaller than and some larger than 23.</para>
+</listitem>
+<listitem>
+<para>One disadvantage of the spiral made by <code>turtle_action_01</code> is that the spiral does not seem very smooth because you can see the line segments. Rewrite the instructions to make the spiral a bit smoother.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 2 -->
+
+<section id ="Exercise 3"><title>Exercise 3: A Spiral Procedure</title>
+<para>The <code>turtle_spiral</code> makes an “inward spiral” of a particular number of steps by using loops (for or while)  and <code>turtle_spiral</code>.</para>
+<para>Check how the procedure works by making spirals of length (number of steps) 10, 20, 30, 50, and 80.</para>
+</section> <!-- Exercise 3 -->
+
+<section id ="Exercise 4"><title>Exercise 4: Repeating Spirals</title>
+<para>
+You've seen two mechanisms for repeating turtle actions: for and while. We've used the for loop to build <code>turtle_spiral</code>. Let's see what happens if we repeat that procedure.
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>What do you expect to happen if you use a loop to have a turtle draw 5 spirals, each of length 80, as in the following?
+<programlisting>
+world4 = image_new(400, 400)
+image_show(world4)
+tarski = Turtle()
+tarski._init_(world4)
+tarski.teleport(200, 200)
+
+x = 0
+while x <= 50:
+  turtle_spiral(tarski, 80)
+  x -= 1
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to happen if you use 85 or 75 for the length of the spiral?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exercise 4 -->
+
+<section id ="Exercise 5"><title>Exercise 5: Repeating Spirals, Revisited</title>
+<para>You've seen that we can use loops to repeat actions. Why not repeat procedures developed using loops? Let's see what happens if we draw a sequence of spirals of different lengths.
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>What image do you expect the following to produce?
+<programlisting>
+world5 = image_new(400, 400)
+image_show(world5)
+turing = Turtle()
+turing._init_(world5)
+turing.teleport(200, 200)
+
+i = range(10)
+i = map(lambda x: x + 10, i)
+for x in xrange(10):
+  turtle_spiral(turing, i[x])
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to happen if you use larger numbers of steps, such as with <code>x + 30</code>?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>What do you expect to happen if we make the list of lengths longer, such as with <code>range(30)</code>? (In this case, assume we still use <code>x + 10</code>).</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exercise 5 -->
+
+<section id ="Exercise 6"><title>Exercise 6: Iteration with GIMP Tools</title>
+<para>
+As the reading suggests, using map, you can take a procedure you wrote and a list. The corresponding elements from the list will be taken as parameters to the procedure.
+We can use this technique to draw complex shapes with the GIMP tools procedures. For example, we can use a loop with <code>image_select_ellipse</code> to select multiple regions and then fill them.
+<programlisting>
+world6 = image_new(200, 200)
+image_show(world6)
+image_select_none(world6)
+
+i = range(20)
+left = map(lambda x: x * 10, i)
+top = map(lambda x: x * 9, i)
+
+for x in xrange(20):
+  image_select_ellipse(world6, "ADD", left[x], top[x], 12, 10)
+ 
+image_fill_selection(world6)
+image_select_none(world6)
+</programlisting>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>What image do you expect this code to produce?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>Suppose we use <code>image_stroke_selection</code> instead of <code>image_fill_selection</code>. What image do you expect the modified code to produce?</para>
+</listitem>
+<listitem>
+<para>Check your answer experimentally.</para>
+</listitem>
+<listitem>
+<para>Extend the expression above to vary the width or height of the ellipses.</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exercise 6 -->
+
+</section> <!-- Exercises -->
+
+<section id ="Extras"><title>For Those With Extra Time</title>
+<para>Those who find that they have finished the main problems in this laboratory may find it useful to work on the extra problems (which emphasize coding) or the explorations (which emphasize images).</para>
+
+<section id ="Extra 1"><title>Extra 1: Working with Multiple Turtles</title>
+<para>
+As you may recall from the reading, we can also use loops to work with a collections of turtles.
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>
+The reading claims that we can make a list of turtles in different positions with the following code. Check that assertion by using loops and <code>turtle.forward</code> to move each of the turtles. 
+<programlisting>
+turtles = map(turtle_new,[world7] * 20)
+xmove = map(lambda x: x * 10, range(20))
+ymove = map(lambda y: y * 5, range(20))
+
+for x in xrange(20):
+  turtles[x].teleport(xmove[x], ymove[x])
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>Write or find a procedure that takes one parameter, a turtle, and makes the turtle do something simple (e.g. you might have the turtle move forward ten steps, turn right 36 degrees, move forward five steps, and turn left 6 degrees).</para>
+</listitem>
+<listitem>
+<para>Use a for loop to apply your procedure to each of the turtles in the list.</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Extra 1 -->
+
+<section id ="Extra 2"><title>Extra 2: Working with Multiple Turtles, Revisited</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Create another list of twenty turtles, as in the previous exercise.</para>
+</listitem>
+<listitem>
+<para>
+Suppose we use the following instruction before we tell our turtles to move or draw. What effect do you expect the instruction to have?
+<programlisting>
+degree = map(lambda rad: rad * 18, range(20))
+
+for x in xrange(x):
+  turtlez[x].turn(degree[x])
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>Check your answer by using a for loop to apply your action from the previous exercise to each turtle.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Extra 2 -->
+
+</section> <!-- Extras -->
+
+<section id ="Explorations"><title>Explorations</title>
+<para>In exercises 4 and 5, you found that different ways of repeating the <code>turtle_spiral</code> procedure gave you very different images. Here are three extensions of those images.</para>
+
+<section id ="Exploration 1"><title>Exploration 1: A Spiral of Spirals</title>
+<para>(Explorations are usually open-ended. However, some students prefer a particular goal. This exploration provides such a goal. Those who wish a more open-ended exploration should go on to one of the next two explorations.)
+Write instructions that create a “spiral of spirals”. That is, your instructions should create a large spiral which is, in essence, a sequence of smaller spirals.</para>
+</section> <!-- Exploration 1 -->
+
+<section id ="Exploration 2"><title>Exploration 2: Exploring Combinations of Spirals</title>
+<para>Create an image you find interesting (appealing, puzzling, “organic”) using a combination of for and while with <code>turtle_spiral</code>.</para>
+</section> <!-- Exploration 2 -->
+
+<section id ="Exploration 3"><title>Exploration 3: Different Base Spirals</title>
+<para>
+All of these images are based on the inward spiral created by repeating <code>turtle_action_02</code>.
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Replace <code>turtle_action_02</code> in the body of <code>turtle_spiral</code> and determine its effect.</para>
+</listitem>
+<listitem>
+<para>Create an image you find interesting (appealing, puzzling, “organic”) using a combination for and while with your new version of <code>turtle_spiral</code>.</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exploration 3 -->
+
+</section> <!-- Explorations -->
+
+<section id ="Reference"><title>Code for Lab</title>
+<para>
+<programlisting>
+def turtle_action_01(turtle, distance):
+    turtle.forward(distance)
+    turtle.turn(23)
+    
+def turtle_action_02(turtle, angle):
+    turtle.forward(5)
+    turtle.turn(angle)
+    
+def turtle_spiral(turtle, steps):
+    for x in xrange(steps):
+        turtle_action_02(turtle, steps)
+        steps -= 1
+</programlisting>
+</para>
+</section> <!-- Reference -->
+
+</section> <!-- Iteration Lab -->
