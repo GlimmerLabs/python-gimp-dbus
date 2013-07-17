@@ -1,0 +1,240 @@
+<section id ="Boolean and Predicate Lab"><title>Laboratory: Boolean Values and Predicate Procedures</title>
+
+<section id ="Summary">
+<para><emphasis>Summary:</emphasis> In this laboratory, you will have the opportunity to explore a number of issues relating to predicates, Boolean values, and conditional operations.</para>
+</section> <!-- Summary -->
+
+<section id ="Preparation"><title>Preparation</title>
+<para>You need not do any preparation for this lab, other than the traditional preparation. Make sure you've done the reading and asked questions about it. Start GIMP. Start the MediaScript plugin. Open the Python IDE.</para>
+</section> <!-- Preparation -->
+
+<section id ="Exercises"><title>Exercises</title>
+
+<section id ="Exercise 1"><title>Exercise 1: Combining Boolean Values</title>
+<para>Experience suggests that students understand <code>and</code> and <code>or</code> much better after a little general practice figuring out how they combine values. Figure out what Boolean (True or False) value the following will return:
+<itemizedlist>
+<listitem>
+<para><code>>>> False and False</code></para>
+</listitem>
+<listitem>
+<para><code>>>> False and True</code></para>
+</listitem>
+<listitem>
+<para><code>>>> True and False</code></para>
+</listitem>
+<listitem>
+<para><code>>>> True and True</code></para>
+</listitem>
+<listitem>
+<para><code>>>> False or False</code></para>
+</listitem>
+<listitem>
+<para><code>>>> False or True</code></para>
+</listitem>
+<listitem>
+<para><code>>>> True or False</code></para>
+</listitem>
+<listitem>
+<para><code>>>> True or True</code></para>
+</listitem>
+</itemizedlist>
+</para>
+</section> <!-- Exercise 1 -->
+
+<section id ="Exercise 2"><title>Exercise 2: Simple Color Predicates</title>
+<para>
+As you may recall, in the reading on Boolean values and predicate procedures, we defined two simple predicates, <code>rgb_light</code> and <code>rgb_dark</code>. Here is their code again:
+<programlisting>
+# Procedure:
+#   rgb_light
+# Parameters:
+#   color, an RGB color
+# Purpose:
+#   Determine if the color seems light.
+# Produces:
+#   light?, a Boolean value
+# Preconditions:
+#   [None]
+# Postconditions:
+#   light? is true (#t) if color's intensity is relatively high.
+#   light? is false (#f) otherwise.
+def rgb_light(color):
+    return 192 <= (.30 * rgb_red(color)) + (.59 * rgb_green(color))+ (.11 * rgb_blue(color))
+
+;;; Procedure:
+;;;   rgb_dark
+;;; Parameters:
+;;;   color, an RGB color
+;;; Purpose:
+;;;   Determine if the color seems dark.
+;;; Produces:
+;;;   dark?, a Boolean value
+;;; Preconditions:
+;;;   [None]
+;;; Postconditions:
+;;;   dark? is true (#t) if color's intensity is relatively low.
+;;;   dark? is false (#f) otherwise.
+def rgb_dark(color):
+    return 64 >= (.30 * rgb_red(color)) + (.59 * rgb_green(color))+ (.11 * rgb_blue(color))
+</programlisting>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Test those predicates on a few extreme values, such as black, white, and a grey, to make sure that they work as you might expect.</para>
+</listitem>
+<listitem>
+<para>Determine experimentally whether there is a dark color with a blue component of 255.</para>
+</listitem>
+<listitem>
+<para>Determine experimentally the largest green component a color can have and still be considered dark.</para>
+</listitem>
+<listitem>
+<para>Determine experimentally the smallest green component a color can have and still be considered light.</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exercise 2 -->
+
+<section id ="Exercise 3"><title>Exercise 3: Writing Your Own Predicates</title>
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Write a predicate, <code>not_very_blue(color)</code>, that only returns True when the color's blue component is less than 64.</para>
+</listitem>
+<listitem>
+<para>Write a predicate, <code>red_dominates(color)</code>, that only returns True if the red component is greater than the sum of the green and the blue components.</para>
+</listitem>
+<listitem>
+<para>Write a predicate, <code>greyish(color)</code>, that only returns True if no two components of color differ by more than 8.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Exercise 3 -->
+
+<section id ="Exercise 4"><title>Exercise 4: Comparing Colors</title>
+<para>
+As you've noted, the <code><</code> procedure can be used to determine if one number is smaller than another. Can we do similar comparisons for colors? Certainly. There are, however, a number of different criteria one could use to compare colors.
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Write a two-parameter predicate, <code>rgb_greener(color1, color2)</code>, that only returns True if the green component of color1 is larger than the green component of color2.</para>
+</listitem>
+<listitem>
+<para>Write a two-parameter predicate, <code>rgb_lighter(color1, color2)</code>, that only returns True if color1 is lighter than color2. Note that in doing this comparison, you should first figure out how light a color is (either by averaging the three components or by using the more complex lightness computation).</para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exercise 4 -->
+
+<section id ="Exercise 5"><title>Exercise 5: Ranges</title>
+<para>Write a procedure, <code>valid_component (color)</code>, that determines if the value of an RGB color’s components are each between 0 and 255, inclusive.</para>
+</section> <!-- Exercise 5 -->
+
+<section id ="Exercise 6"><title>Exercise 6: Types</title>
+<para>
+In python, values have different types. You can get the type of something with the <code>type(arg)</code> procedure.
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Try <code>type(7)</code> and <code>type(9.7)</code> in the interactions pane. What do you think the difference between the types will be?</para>
+</listitem>
+<listitem>
+<para>Now try type(“Hello”)</para>
+</listitem>
+</orderedlist>
+</para>
+<para>
+The <code>==</code> operator will test to see if the two given arguments are equal. Remember that it is two equal signs, not just one!
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Try <code>type(7) == int</code></para>
+</listitem>
+<listitem>
+<para>Try <code>type(9.7) == float</code></para>
+</listitem>
+<listitem>
+<para>Try <code>type(“Hello”) = str</code></para>
+</listitem>
+<listitem>
+<para>Try <code>type(“World”) == int<code></para>
+</listitem>
+</orderedlist>
+</para>
+<para>
+There are many more types then just int, float, and str, such as list, but you will be working primarily with those three types in this lab.
+</para>
+</section> <!-- Exercise 6 -->
+
+<section id ="Exercise 7"><title>Exercise 7: Exploring <code>and</code> and <code>or</code></title>
+<para>
+Remember that when using <code>and</code> or <code>or</code> you will most likely be using them to test for a certain case (i.e. <code>and</code> and <code>or</code> are commonly used with an if statement).
+<orderedlist numeration="loweralpha">
+<listitem>
+<para>Determine the value <code>and</code> returns when called with no parameters.</para>
+</listitem>
+<listitem>
+<para>Explain why you think the designers of python had <code>and</code> return that value.</para>
+</listitem>
+<listitem>
+<para>Try <code>7 and 5</code>.  What do you get?  (Useless isn’t it?)</para>
+</listitem>
+<listitem>
+<para>Try <code>type(7) == int and type(5) == int</code></para>
+</listitem>
+<listitem>
+<para>Now try <code>type(7) == int and type(5) == float</code></para>
+</listitem>
+<listitem>
+<para>Determine the value <code>or</code> returns when called with no parameters.</para>
+</listitem>
+<listitem>
+<para>Try <code>7 or 5</code>. What do you get? (Useless isn’t it?)</para>
+</listitem>
+<listitem>
+<para>Try <code>type(7) == int  or type(5) == int</code></para>
+</listitem>
+<listitem>
+<para>Now try <code>type(7) == int or type(5) == float</code></para>
+</listitem>
+</orderedlist>
+</para>
+</section> <!-- Exercise 7 -->
+
+</section> <!-- Exercises -->
+
+<section id ="Extras"><title>For Those With Extra Time</title>
+
+<section id ="Extra 1"><title>Extra 1: Exploring Shades, Revisited</title>
+<para>
+You may recall that in exercise 2, you explored how certain components can affect whether a color is considered light or dark, and you attempted to find colors that helped you make those determinations. As you know, an important aspect of computer science is taking the informal processes we use and attempting to formalize them. So, let's try that for a similar problem.
+Give instructions that someone else could follow in order to determine the darkest shade of grey that is still considered light. In writing these instructions, assume that the precise algorithm <code>rgb_light</code> uses is unknown. All you know about the procedure is that if it considers one shade of grey light, then it considers every lighter shade of grey light. (Recall that we have decided that a color is a shade of grey if its three components are all equal.)
+If someone else in the class has also developed a set of instructions, get their instructions and attempt to follow them. (You should also share your instructions with others.)
+</para>
+</section> <!-- Extra 1 -->
+
+<section id ="Extra 2"><title>Extra 2: Dominance</title>
+<para>
+Write three predicates, each of which checks if one component is greater than the others.
+<itemizedlist>
+<listitem>
+<para><code>mostly_red(color)</code> holds if the red component of color is the largest of the three components.</para>
+</listitem>
+<listitem>
+<para><code>mostly_green(color)</code> holds if the green component of color is the largest of the three components.</para>
+</listitem>
+<listitem>
+<para><code>mostly_blue(color)</code> holds if the blue component of color is the largest of the three components.</para>
+</listitem>
+</itemizedlist>
+</para>
+</section> <!-- Extra 2 -->
+
+<section id ="Extra 3"><title>Extra 3: Transforming to Dominant Colors</title>
+<orderedlist numeration="">
+<listitem>
+<para>Write a procedure, <code>rgb_dominant(color)</code>, that that converts a color to red if the color is mostly red, to blue if the color is mostly blue, and to green if the color is mostly green. If the color is none of those, <code>rgb_dominant</code> should convert the color to a moderate grey. You may want to use the structure of rgb-bgw as a pattern for this procedure.</para>
+</listitem>
+<listitem>
+<para>Try applying <code>rgb_dominant</code> to a variety of colors.</para>
+</listitem>
+</orderedlist>
+</section> <!-- Extra 3 -->
+
+</section> <!-- Extras -->
+
+</section> <!-- Boolean and Predicate Lab -->
