@@ -10,6 +10,7 @@ session = dbus.SessionBus()
 gimpProxy = session.get_object('edu.grinnell.cs.glimmer.GimpDBus', 
                                 '/edu/grinnell/cs/glimmer/gimp')
 gimp =  dbus.Interface(gimpProxy, 'edu.grinnell.cs.glimmer.pdb')
+tiles =  dbus.Interface(gimpProxy, 'edu.grinnell.cs.glimmer.gimpplus')
 
 #Procedure:
 #Parameters:
@@ -85,6 +86,8 @@ def _drawing_bottom(drawing):
         return max(map(_drawing_bottom, drawing_members(drawing)))
     else:
         return drawing_top(drawing) + drawing_height(drawing)
+
+
     
 def drawing_bottom(drawing):
     if (drawing_validate(drawing)):
@@ -247,7 +250,7 @@ def drawing_hshift(drawing, factor):
             else:
                 raise TypeError("Unknown drawing type, cannot shift.")                     
     else:
-        raise TypeError("drawing_hscale: arguments must be a valid drawing"
+        raise TypeError("drawing_hshift: arguments must be a valid drawing"
                             + " and a real number as the shift factor.")    
     
     
@@ -1046,9 +1049,14 @@ def context_set_fgcolor(color):
 def context_set_bgcolor(color):
     if(rgb_validate(color)):
         gimp.gimp_context_set_background(color)
-     
-     
-     
+        
+        
+#Procedure: is_real
+#Parameters: num, a number
+#Purpose: test if the number is a real or not
+#Produces: a true or false
+#Preconditions: none
+#Postconditions: tests if num is a float or a int      
 def is_real(num):
     return type(num) is int or type(num) is float
 
@@ -1098,7 +1106,8 @@ class Flag:
         return self.status
 
     
-context_preserve = Flag()
+context_preserve = Flag
+    
 
     
 #Procedure: usleep
@@ -1114,20 +1123,67 @@ def usleep(seconds):
 # *************************************************************************
 # *                               Pixels                                  *
 # *************************************************************************
+#Procedure: image_compute
+#Parameters:pos2color: a proc that has the form lambda row, col: color
+#           width, an postive integer
+#           height, an a postive integer
+#Purpose: Compute new width by height image using pos2color to compute the 
+#          color at each position  
+#Produces: a image 
+#Preconditions: None 
+#Postconditions:It will create a new image and return that image.
+#               Image_compute starts a tile stream, then gets a tile.  Then it 
+#               iterates by tile.  
+def image_compute(pos2color, width, height):
+    image = image_new(width, height)
+    layer = image_get_layer(image)
+    row = 0
+    col = 0
+    start_row = 0
+    start_col = 0
+    tile_stream = tiles.tile_stream_new(image, layer)
+    if(not(tiles.tile_stream_is_valid(tile_stream))):
+        raise TypeError ("The stream is not valid")
+    else:
+        tile = tiles.tile_stream_get(tile_stream)
+        length = len(tile[1])
+        i = 0
+        while i < length:
+            color = pos2color(row,col)
+            tile[1][i] = bound(rgb_red(color), 0, 255)
+            tile[1][i + 1] = bound(rgb_green(color), 0, 255)
+            tile[1][i + 2] = bound(rgb_blue(color), 0, 255)
+            i += 3
+            row = row + 1
+            if (row == tile[6]):
+                row = 0
+                col +=  1
+        tiles.tile_update(tile_stream, tile[0], tile[1])
+        while tiles.tile_stream_advance(tile_stream):
+            tile = tiles.tile_stream_get(tile_stream)
+            row = tile[4]
+            col = tile[5]
+            length = len(tile[1])
+            i = 0
+            while i < length:
+                color = pos2color(row,col)
+                tile[1][i] = bound(rgb_red(color), 0, 255)
+                tile[1][i + 1] =bound(rgb_green(color), 0, 255)
+                tile[1][i + 2] =bound(rgb_blue(color), 0, 255)
+                i += 3
+                row += 1
+                if(row == tile[6] + tile[4]):
+                    row = tile[4]
+                    col += 1
+            tiles.tile_update(tile_stream, tile[0], tile[1])
+    tiles.tile_stream_close(tile_stream)
+    return image
 
 
-#Procedure:
-#Parameters:
-#Purpose:
-#Produces:
-#Preconditions:
-#Postconditions:
-def image_compute_pixels(image, pos2color):
-    if(image_validate(image)):
-        pos2color = pos2color(col, row)
-        return pos2color
-
-                
+def image_compute_pixels(pos2color, image):
+    if (image_validate(image)):
+        return image_compute(pos2color, image_width(image), image_height(image))
+    
 #Procedure: image_get_pixel
 #Parameters: image, an image
 #            col, an integer
